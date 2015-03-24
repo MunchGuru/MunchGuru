@@ -23,6 +23,5 @@
   },
   "_source": "git://github.com/kuhnza/angular-google-places-autocomplete.git",
   "_target": "~0.2.5",
-  "_originalSource": "angular-google-places-autocomplete",
-  "_direct": true
+  "_originalSource": "angular-google-places-autocomplete"
 }

@@ -11,7 +11,7 @@ var db = Bookshelf.initialize({
     // database: 'snackreactordb',
     charset: 'utf8',
     filename: path.join(__dirname, './snackreactordb.sqlite')
-  }, debug: true
+  }
 });
 
 db.knex.schema.hasTable('restaurants').then(function(exists) {
