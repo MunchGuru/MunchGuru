@@ -1,107 +1,98 @@
 <div ng-controller="MainCtrl" class="main">
-<div class="overlay"></div>
-  <div class="content">
-  <a id="logout" href="/auth/logout" ng-hide="isLogged" target="_self">Logout</a>
-  <a href="/restaurant/create" target="_self">Create a Restaurant</a>
-    <div class="headline">
-      <h1>Munch Guru</h1>
-      <p class="subtitle">Find the best places to eat near your work or school.</p>
-    </div>
+  <div class="overlay"></div>
+    <div class="content">
+    <a id="logout" href="/auth/logout" ng-hide="isLogged" target="_self">Logout</a>
+    <a href="/restaurant/create" target="_self">Create a Restaurant</a>
+      <div class="headline">
+        <h1>Munch Guru</h1>
+        <p class="subtitle">Find the best places to eat near your work or school.</p>
+      </div>
 
-    <div class="list">
-      <table class="rankings-table">
-        <tr>
-          <td><span class="go">GO</span></td>
-          <td>13</td>
-          <td>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star-half"></span>
-          </td>
-          <td>Gary Danko</td>
-        </tr>
-        <tr>
-          <td><span class="go">GO</span></td>
-          <td>10</td>
-          <td>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-          </td>
-          <td>Chipotle</td>
-        </tr>
-        <tr class="rankings-row going">
-          <td><span class="picked">GOING</span></td>
-          <td>5</td>
-          <td>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star-half"></span>
-          </td>
-          <td>McDonald</td>
-        </tr>
-        <tr>
-          <td><span class="go">GO</span></td>
-          <td>2</td>
-          <td>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star-half"></span>
-          </td>
-          <td>Carl Jr</td>
-        </tr>
-        <tr>
-          <td><span class="go">GO</span></td>
-          <td>1</td>
-          <td>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star-half"></span>
-          </td>
-          <td>Subway</td>
-        </tr>
-      </table>
-    </div>
-   <!-- <div class="options">
-     <i class="fa fa-heart fa-5x" ng-class="{'health':is1healthClick}" ng-click="healthClick1()"></i>
-     <i class="fa fa-heart fa-5x" ng-class="{'health':is2healthClick}" ng-click="healthClick2()"></i>
-     <i class="fa fa-heart fa-5x" ng-class="{'health':is3healthClick}" ng-click="healthClick3()"></i>
-     <i class="fa fa-usd fa-4x"   ng-class="{'price':is1priceClick}"  ng-click="priceClick1()"></i>
-     <i class="fa fa-usd fa-4x"   ng-class="{'price':is2priceClick}"  ng-click="priceClick2()"></i>
-     <i class="fa fa-usd fa-4x"   ng-class="{'price':is3priceClick}"  ng-click="priceClick3()"></i>
- 
-
-   <div ng-controller="ModalCtrl">
-
-    <script type="text/ng-template" id="myModalContent.html">
-
-        <div class="modal-header">
-            <h3 class="modal-title">Welcome to Munch Grub</h3>
+      <div class="list">
+        <form name="searchForm">
+          <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" placeholder="Type restaurant name to add to the list...">  
+          <button id="search" ng-click="search(restaurant)">Search</button>
+        </form>
+        <div>
+          <ul>
+          </ul>
         </div>
+        <table class="rankings-table">
+          <tr>
+            <td><span class="go">GO</span></td>
+            <td>13</td>
+            <td>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star-half"></span>
+            </td>
+            <td>Gary Danko</td>
+          </tr>
+          <tr>
+            <td><span class="go">GO</span></td>
+            <td>10</td>
+            <td>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </td>
+            <td>Chipotle</td>
+          </tr>
+          <tr class="rankings-row going">
+            <td><span class="picked">GOING</span></td>
+            <td>5</td>
+            <td>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star-half"></span>
+            </td>
+            <td>McDonald</td>
+          </tr>
+          <tr>
+            <td><span class="go">GO</span></td>
+            <td>2</td>
+            <td>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star-half"></span>
+            </td>
+            <td>Carl Jr</td>
+          </tr>
+          <tr>
+            <td><span class="go">GO</span></td>
+            <td>1</td>
+            <td>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star-half"></span>
+            </td>
+            <td>Subway</td>
+          </tr>
+        </table>
+      </div>
 
-        <div class="modal-body">
-            SnackReactor is all about using the knowledge of your classmates and colleagues to find the best places to eat near you. Login or sign up with the button below, and start discovering new restaurants today.
-
-            <div class="modal-footer">
-              <a href="/auth/github" target= "_self" class="search fa fa-github btn btn-block btn-social btn-github">
-              Sign in with GitHub
-              </a>
+      <div class="options">
+        <div ng-controller="ModalCtrl">
+          <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+              <h3 class="modal-title">Welcome to Munch Grub</h3>
             </div>
 
-        </div>   
-    </script>
+            <div class="modal-body">
+              MunchGuru is all about using the knowledge of your classmates and colleagues to find the best places to eat near you. Login or sign up with the button below, and start discovering new restaurants today.
 
-    <button id="search" ng-click="search('results')">Search!</button><br>
-    <span class='label label-default' ng-show="searching">Searching...</span>
-    <span class="label label-danger" ng-show="noResults">Your search didn't return any results. Perhaps nothing's open?</span>
-  </div> -->
-
-
-</div>
+              <div class="modal-footer">
+                <a href="/auth/github" target= "_self" class="search fa fa-github btn btn-block btn-social btn-github">Sign in with GitHub</a>
+              </div>
+            </div>
+          </script>
+        </div> 
+      </div>
+  </div>
 </div>  
 
 <!--<form method="post" ng-submit="login()" name="loginForm" class="ng-pristine ng-invalid ng-invalid-required">
