@@ -67,7 +67,7 @@ router.post('/github/setorg', authenticate, function(req,res){
           res.send({create: false}); // respond with instructions that no creation is necessary
         });
       });
-    };
+    }
   });
 })
 
