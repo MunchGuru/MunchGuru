@@ -198,28 +198,39 @@ button{
     opacity: 0.9;
 }
 
+#searchbar {
+    width: 850px;
+    margin-right: 20px;
+    height: 55px;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    border: solid thin #404040;
+    color: #404040;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-left: 15px;
+    outline: none;
+
+}
+
 #search {
-    margin-top: 5%;
     cursor: pointer;
-    font-weight: lighter;
+    /*font-weight: lighter;*/
     -webkit-appearance: none;
     appearance: none;
+    font-weight: bolder;
     background: #FF2538;
-    box-sizing: border-box;
     position: relative;
-    box-sizing: content-box ;
-    width: 3em;
+    /*box-sizing: content-box ;*/
+    width: 80px;
     height: 30px;
     border-width: 0;
     transition: all .3s linear;
     margin-bottom: 10px;
     outline: none;
     color: #fff;
-    padding-left: 40px;
-    padding-top: 1px;
-    padding-bottom: 40px;
-    padding-right: 40px;
-    font-size: 50px;
+    padding: 10px;
+    font-size: 1.5em;
     border-radius: 5px;
 }
 

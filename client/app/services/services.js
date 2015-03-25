@@ -18,67 +18,240 @@ angular.module('snackReactor-services',[])
 .factory('SearchRestaurants', ['$http', '$location', function($http, $location){
   
   var getRestaurants = function (value) {
-    return [{
-        "display": "Restaurants",
-        "api": "restaurants",
-        "img_url": "http://media-cdn.tripadvisor.com/media/photo-s/01/f7/51/8d/club-grille-steak-house.jpg"
-      },
-      {
-        "display": "Nightlife",
-        "api": "nightlife",
-        "img_url": "http://www.deliciouslysortedibiza.com/backgrounds/bg-nightlife.jpg"
-      },
-      {
-        "display": "Active Life",
-        "api": "active",
-        "img_url": "http://www.canadianwilderness.com/wp-content/uploads/2013/11/ATV-Web.jpeg?222172"
-      },
-      {
-        "display": "Arts & Entertainment",
-        "api": "arts",
-        "img_url": "http://afri-culture.com/wp-content/uploads/2012/09/arts-entertainment-full-1.jpeg"
-      },
-      {
-        "display": "Beauty & Spas",
-        "api": "beautysvc",
-        "img_url": "http://85.92.82.55/~thelodg/wp-content/uploads/2010/12/spa.jpg"
-      },
-      {
-        "display": "Hotels & Travel",
-        "api": "hotelstravel",
-        "img_url": "http://www.cotswolds.info/images/generic/hotels.jpg"
-      },
-      {
-        "display": "Shopping",
-        "api": "shopping",
-        "img_url": "http://data3.whicdn.com/images/9713691/original.jpg"
-      },
-      {
-        "display": "Local Services",
-        "api": "localservices",
-        "img_url": "http://bakkersfinedrycleaning.com/wp-content/uploads/2012/09/clean-suits.jpg"
-      },
-      {
-        "display": "Professional Services",
-        "api": "professional",
-        "img_url": "http://cdn.ownthedollar.com/wp-content/uploads/2009/02/income-tax-return.jpg"
-      },
-      {
-        "display": "Real Estate",
-        "api": "realestate",
-        "img_url": "http://cdn.cstatic.net/gridnailer/500x/http://cdn.cstatic.net/images/gridfs/541b0cedf92ea112c100c408/5cd2ca6d.building01_color.jpg"
-      },
-      {
-        "display": "Automotive Services",
-        "api": "auto",
-        "img_url": "http://jparsonsauto.com/wp-content/uploads/2013/03/carmechanic.jpg"
-      },
-      {
-        "display": "Event Planning & Services",
-        "api": "eventservices",
-        "img_url": "http://voodoocomedy.com/wp-content/uploads/2015/02/MCC.jpg"
-      }
-    ];
+    return {
+        'region': {
+          'span': {
+            'latitude_delta': 0.15268098999999324,
+            'longitude_delta': 0.11678680578179979
+          },
+          'center': {
+            'latitude': 37.799835849999994,
+            'longitude': -122.446273388281
+          }
+        },
+        'total': 40,
+        'businesses': [
+          {
+            'is_claimed': true,
+            'rating': 4.5,
+            'mobile_url': 'http://m.yelp.com/biz/cafe-rx-san-francisco',
+            'rating_img_url': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png',
+            'review_count': 27,
+            'name': 'Cafe RX',
+            'snippet_image_url': 'http://s3-media1.fl.yelpcdn.com/photo/MnF0nPYh3w7LvKsGsjLYwg/ms.jpg',
+            'rating_img_url_small': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png',
+            'url': 'http://www.yelp.com/biz/cafe-rx-san-francisco',
+            'phone': '4155612273',
+            'snippet_text': 'GO HERE & YOU WON"T REGRET IT (;\n\nmy roommate and I were able to stumble upon this cute place, due to the fact that we were both hungry and we were up by...',
+            'image_url': 'http://s3-media1.fl.yelpcdn.com/bphoto/OWavhUDsBoQCUF1Uv_P4oQ/ms.jpg',
+            'categories': [
+              [
+                'Breakfast & Brunch',
+                'breakfast_brunch'
+              ],
+              [
+                'Sandwiches',
+                'sandwiches'
+              ],
+              [
+                'Cafes',
+                'cafes'
+              ]
+            ],
+            'display_phone': '+1-415-561-2273',
+            'rating_img_url_large': 'http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png',
+            'id': 'cafe-rx-san-francisco',
+            'is_closed': false,
+            'location': {
+              'city': 'San Francisco',
+              'display_address': [
+                'Thoreau Center in the Presidio',
+                '1013 Torney Ave',
+                'Presidio',
+                'San Francisco, CA 94129'
+              ],
+              'geo_accuracy': 8,
+              'neighborhoods': [
+                'Presidio'
+              ],
+              'postal_code': '94129',
+              'country_code': 'US',
+              'address': [
+                'Thoreau Center in the Presidio',
+                '1013 Torney Ave'
+              ],
+              'coordinate': {
+                'latitude': 37.7998600155115,
+                'longitude': -122.451773285866
+              },
+              'state_code': 'CA'
+            }
+          },
+          {
+            'is_claimed': true,
+            'rating': 4.5,
+            'mobile_url': 'http://m.yelp.com/biz/cafe-me-san-francisco-2',
+            'rating_img_url': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png',
+            'review_count': 169,
+            'name': 'Cafe Me',
+            'snippet_image_url': 'http://s3-media3.fl.yelpcdn.com/photo/qU0Ey_uDaX6OcBzsTUj91A/ms.jpg',
+            'rating_img_url_small': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png',
+            'url': 'http://www.yelp.com/biz/cafe-me-san-francisco-2',
+            'phone': '4152888628',
+            'snippet_text': 'Arguably the best breakfast sandwich in SF.\n\nService is fast and friendly, food tastes great, priced right, what more could you ask for?  I could eat there...',
+            'image_url': 'http://s3-media4.fl.yelpcdn.com/bphoto/qhBjMbtsV4D70p_wn-gqEA/ms.jpg',
+            'categories': [
+              [
+                'Breakfast & Brunch',
+                'breakfast_brunch'
+              ],
+              [
+                'Coffee & Tea',
+                'coffee'
+              ],
+              [
+                'Sandwiches',
+                'sandwiches'
+              ]
+            ],
+            'display_phone': '+1-415-288-8628',
+            'rating_img_url_large': 'http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png',
+            'id': 'cafe-me-san-francisco-2',
+            'is_closed': false,
+            'location': {
+              'cross_streets': 'Sansome St & Hotaling St',
+              'city': 'San Francisco',
+              'display_address': [
+                '500 Washington St',
+                'Financial District',
+                'San Francisco, CA 94111'
+              ],
+              'geo_accuracy': 9.5,
+              'neighborhoods': [
+                'Financial District'
+              ],
+              'postal_code': '94111',
+              'country_code': 'US',
+              'address': [
+                '500 Washington St'
+              ],
+              'coordinate': {
+                'latitude': 37.7959978128965,
+                'longitude': -122.402058961065
+              },
+              'state_code': 'CA'
+            }
+          },
+          {
+            'is_claimed': true,
+            'rating': 4.5,
+            'mobile_url': 'http://m.yelp.com/biz/cafe-st-jorge-san-francisco',
+            'rating_img_url': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png',
+            'review_count': 160,
+            'name': 'Cafe St. Jorge',
+            'snippet_image_url': 'http://s3-media1.fl.yelpcdn.com/photo/7mHAcbwVP_ZEvX2I74HNFw/ms.jpg',
+            'rating_img_url_small': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png',
+            'url': 'http://www.yelp.com/biz/cafe-st-jorge-san-francisco',
+            'menu_date_updated': 1416477451,
+            'phone': '4158142028',
+            'snippet_text': 'I love their coffee, always just right!\n\nI found this place when i lived in Bernal, and i still come here to work and have quiet time. try their menu, food...',
+            'image_url': 'http://s3-media2.fl.yelpcdn.com/bphoto/BXIstyFf-qzdP4IbCS2-9A/ms.jpg',
+            'categories': [
+              [
+                'Breakfast & Brunch',
+                'breakfast_brunch'
+              ],
+              [
+                'Coffee & Tea',
+                'coffee'
+              ]
+            ],
+            'display_phone': '+1-415-814-2028',
+            'rating_img_url_large': 'http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png',
+            'menu_provider': 'single_platform',
+            'id': 'cafe-st-jorge-san-francisco',
+            'is_closed': false,
+            'location': {
+              'cross_streets': 'Cortland Ave & Kingston St',
+              'city': 'San Francisco',
+              'display_address': [
+                '3438 Mission St',
+                'Bernal Heights',
+                'San Francisco, CA 94110'
+              ],
+              'geo_accuracy': 9.5,
+              'neighborhoods': [
+                'Bernal Heights',
+                'Mission'
+              ],
+              'postal_code': '94110',
+              'country_code': 'US',
+              'address': [
+                '3438 Mission St'
+              ],
+              'coordinate': {
+                'latitude': 37.741612083577,
+                'longitude': -122.422536600206
+              },
+              'state_code': 'CA'
+            }
+          },
+          {
+            'is_claimed': true,
+            'rating': 4.5,
+            'mobile_url': 'http://m.yelp.com/biz/mission-public-san-francisco',
+            'rating_img_url': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png',
+            'review_count': 73,
+            'name': 'Mission Public',
+            'snippet_image_url': 'http://s3-media2.fl.yelpcdn.com/photo/PVsN3GXGm0cu_AwBrYq5cw/ms.jpg',
+            'rating_img_url_small': 'http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png',
+            'url': 'http://www.yelp.com/biz/mission-public-san-francisco',
+            'menu_date_updated': 1401865075,
+            'phone': '4155254175',
+            'snippet_text': 'Great community space filled with chill people, local artwork, and delicious snacks. From the sandwiches to the homemade poptarts, there are great times to...',
+            'image_url': 'http://s3-media2.fl.yelpcdn.com/bphoto/e_dGzBIaNEYssFpaYTmVvQ/ms.jpg',
+            'categories': [
+              [
+                'Breakfast & Brunch',
+                'breakfast_brunch'
+              ],
+              [
+                'Cafes',
+                'cafes'
+              ]
+            ],
+            'display_phone': '+1-415-525-4175',
+            'rating_img_url_large': 'http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png',
+            'menu_provider': 'single_platform',
+            'id': 'mission-public-san-francisco',
+            'is_closed': false,
+            'location': {
+              'cross_streets': 'Natoma St & Minna St',
+              'city': 'San Francisco',
+              'display_address': [
+                '233 14th St',
+                'Mission',
+                'San Francisco, CA 94103'
+              ],
+              'geo_accuracy': 9.5,
+              'neighborhoods': [
+                'Mission'
+              ],
+              'postal_code': '94103',
+              'country_code': 'US',
+              'address': [
+                '233 14th St'
+              ],
+              'coordinate': {
+                'latitude': 37.768286,
+                'longitude': -122.4186664
+              },
+              'state_code': 'CA'
+            }
+          }
+        ]
+      };
+
     // return $http({
     //   method: 'GET',
     //   url: 'api/search/'+value,
@@ -149,7 +322,7 @@ angular.module('snackReactor-services',[])
 })
 
 .factory('OrgSelect', ['$http', function($http, $location){
-  var instance = {}
+  var instance = {};
   
   instance.getGithubOrgs = function(){
     return $http.get('/user/getorgs/github')
@@ -174,8 +347,8 @@ angular.module('snackReactor-services',[])
     })
     .error(function(data,status,headers,config){
       console.error('Error posting org: ' + data);
-    })
-  }
+    });
+  };
 
   instance.getGithubOrgInfo = function(login, token){
 
@@ -212,7 +385,7 @@ angular.module('snackReactor-services',[])
       github_login: github_login,
       placeId: placeId
     });
-  }
+  };
 
   return instance;
 
@@ -220,16 +393,16 @@ angular.module('snackReactor-services',[])
 
 .factory('CreateRestaurant', ['$http', function($http){
     
-    return function(name, address, health, price, description, rating){
-      return $http.post('/api/restaurants/new', {
-        name: name,
-        address: address,
-        health: health,
-        price: price,
-        description: description,
-        rating: rating
-      });
-    }
+  return function(name, address, health, price, description, rating){
+    return $http.post('/api/restaurants/new', {
+      name: name,
+      address: address,
+      health: health,
+      price: price,
+      description: description,
+      rating: rating
+    });
+  };
 
 }])
 
