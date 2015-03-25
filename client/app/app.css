@@ -96,14 +96,100 @@ button{
     left: 0;
     right: 0;
     margin: auto;
-    top: 10%;
+    top: 100px;
 }
 .subtitle{
     position: relative;
-    top: 30%;
+    top: 10px;
     font-size: 30px;
     font-weight: lighter;
 }
+.list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 350px;
+    opacity: 0.9;
+    text-align: center;
+}
+.rankings-table{
+    margin: 0 auto;
+    background-color: white;
+    width: 1000px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    color: black;
+    border-collapse:separate;
+}
+
+.rankings-table tr{
+    height: 50px;
+    font-size: 3em;
+    cursor: pointer;
+}
+
+.rankings-table td:first-child {
+    vertical-align: top;
+    padding-bottom: 15px;
+}
+
+.rankings-table tr:first-child td:first-child {
+    border-radius: 15px 0 0 0;
+    -webkit-border-radius: 15px 0 0 0;
+}
+
+.rankings-table tr:first-child td:last-child {
+    border-radius: 0 15px 0 0;
+    -webkit-border-radius: 0 15px 0 0;
+}
+
+.rankings-table tr:last-child td:first-child {
+    border-radius: 0 0 0 15px;
+    -webkit-border-radius: 0 0 0 15px;
+}
+
+.rankings-table tr:last-child td:last-child {
+    border-radius: 0 0 15px 0;
+    -webkit-border-radius: 0 0 15px 0;
+}
+
+.rankings-table tr:only-child td:first-child {
+    border-radius: 15px 0 0 15px;
+    -webkit-border-radius: 15px 0 0 15px;
+}
+
+.rankings-table tr:only-child td:last-child {
+    border-radius: 0 15px 15px 0;
+    -webkit-border-radius: 0 15px 15px 0;
+}
+
+.go {
+    font-size: .5em;
+    padding: 10px;
+    /*border: solid thick green;*/
+    background-color: limegreen;
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+}
+.picked {
+    font-size: .5em;
+    padding: 10px;
+    /*border: solid thick green;*/
+    background-color: silver;
+    border-radius: 10px;
+    color: white;
+    /*border: thin #404040 solid;*/
+    font-weight: bolder;
+}
+.going {
+    background-color: lightgreen;
+}
+
+.rankings-table tr:hover{
+    background-color: lightgrey;
+}
+
 .options {
     position: absolute;
     left: 0;
