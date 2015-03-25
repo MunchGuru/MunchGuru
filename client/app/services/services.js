@@ -17,12 +17,32 @@ angular.module('snackReactor-services',[])
 
 .factory('SearchRestaurants', ['$http', '$location', function($http, $location){
   
-  return function(health,price){
-    var tz = jstz.determine().name();
-    var localTime = moment.tz(tz);
-    // var utcOffset = localTime.utcOffset();
-    return $http.post('/api/search', 
-      {health: health, price: price, time: localTime, timeZone: tz});
+  var get = function (name) {
+    return $http({
+      method: 'GET',
+      url: 'http://yelpvisualization.azurewebsites.net/api/restaurant/'+name,
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+
+  var add = function (url) {
+        console.log(url);
+
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: { url: url }
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+
+  return {
+    get: get,
+    add: add
   };
 
 }])
