@@ -1,0 +1,64 @@
+<div ng-controller="DevCtrl" class="main">
+<div class="overlay"></div>
+  <div class="content">
+  <a id="logout" href="/auth/logout" ng-hide="isLogged" target="_self">Logout</a>
+  <a href="/restaurant/create" target="_self">Create a Restaurant</a>
+    <div class="headline">
+      <h1>Snack Reactor</h1>
+      <p class="subtitle">Find the best places to eat near your work or school.</p>
+    </div>
+   <div class="options">
+   <form name="Form">
+     <input class="searchbar" type="text" name="restaurant" ng-model = "restaurant"placeholder="Restaurant name ...">  
+     <button class="btn btn-default" ng-click= "search(restaurant)">Search </button>
+   </form>
+     
+   <div ng-controller="ModalCtrl">
+
+
+    <script type="text/ng-template" id="myModalContent.html">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Welcome to Snack Reactor</h3>
+        </div>
+
+        <div class="modal-body">
+            SnackReactor is all about using the knowledge of your classmates and colleagues to find the best places to eat near you. Login or sign up with the button below, and start discovering new restaurants today.
+
+            <div class="modal-footer">
+              <a href="/auth/github" target= "_self" class="search fa fa-github btn btn-block btn-social btn-github">
+              Sign in with GitHub
+              </a>
+            </div>
+
+        </div>   
+    </script>
+    <button id="search" ng-click="search('results')">Search!</button><br>
+    <span class='label label-default' ng-show="searching">Searching...</span>
+    <span class="label label-danger" ng-show="noResults">Your search didn't return any results. Perhaps nothing's open?</span>
+  </div>
+
+
+</div>
+</div>  
+
+<!--<form method="post" ng-submit="login()" name="loginForm" class="ng-pristine ng-invalid ng-invalid-required">
+              //   <div class="form-group has-feedback">
+              //     <input class="form-control input-lg ng-pristine ng-invalid ng-invalid-required ng-touched" type="text" name="email" ng-model="email" placeholder="Email" required="" autofocus="">
+              //     <span class="ion-at form-control-feedback"></span>
+              //   </div>
+
+              //   <div class="form-group has-feedback">
+              //     <input class="form-control input-lg ng-pristine ng-invalid ng-invalid-required ng-touched" type="password" name="password" ng-model="password" placeholder="Password" required="">
+              //     <span class="ion-key form-control-feedback"></span>
+              //   </div>
+
+              //   <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-sm btn-block btn-success" disabled="disabled">Log in</button>
+              //   <br>
+              //   <p class="text-center text-muted">
+              //   <small>Dont have an account yet? <a href="/signin">Sign up</a></small>
+              //   </p>
+              // </form>
+-->
+
+
