@@ -98,7 +98,7 @@ selectNodeVersion () {
 # Deployment
 # ----------
 
-echo Handling node.js deployment.
+echo Handling node.js deplo
 echo $DEPLOYMENT_TARGET
 
 # 1. KuduSync
