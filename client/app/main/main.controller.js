@@ -2,7 +2,7 @@
 
 var app = angular.module('snackReactorApp');
 //refactor to services
-app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants) {
+app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants, SharedData) {
 
   $scope.isLogged = false;
   
@@ -15,14 +15,26 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     $scope.isLogged = !$scope.isLogged;
   };
 
+  $scope.addPlace = function (restaurant){
+    console.log($scope);
+    var newLoc = {};
+    newLoc.id = restaurant.id;
+    newLoc.name = restaurant.name;
+    newLoc.rating = 4.3;
+    var x = SharedData.get('orgId');
+    console.log(x);
+    SearchRestaurants.addLocation(newLoc);
+
+  };
+
   $scope.search = function (name){
     console.log(name);
-    console.log(SearchRestaurants.getRestaurants(name));
+    // console.log(SearchRestaurants.getRestaurants(name));
+    $scope.results = SearchRestaurants.getRestaurants(name);
     // SearchRestaurants.getRestaurants(name).then(function(data){
     //   console.log("Response: ", data);
     // })
   };
-
 });
 
 app.controller('ModalCtrl', function ($scope, $modal, $log, CheckLoggedIn) {

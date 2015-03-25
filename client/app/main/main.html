@@ -13,10 +13,13 @@
           <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" placeholder="Type restaurant name to add to the list...">  
           <button id="search" ng-click="search(restaurant)">Search</button>
         </form>
-        <div>
-          <ul>
-          </ul>
-        </div>
+        <ul>
+          <li ng-repeat="restaurant in results.businesses">
+            <div ng-click="addPlace(restaurant)">{{restaurant.name}} - {{restaurant.location["display_address"][0]}}</div>
+            <!-- <div>{{link.url}}</div>
+            <a ng-href="{{link.base_url + '/' + link.code}}">{{link.base_url + "/" + link.code}}</a> -->
+          </li>
+        </ul>
         <table class="rankings-table">
           <tr>
             <td><span class="go">GO</span></td>
