@@ -408,8 +408,8 @@ module.exports = function (grunt) {
             },
       github: {
         options:{
-          remote: 'git@github.com:FearlessSoup/SnackReactor.git',
-          branch: 'production'
+          remote: 'git@github.com:MunchGuru/MunchGuru.git',
+          branch: 'master'
         }
       }
     },
