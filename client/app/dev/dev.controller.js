@@ -29,11 +29,10 @@ app.controller('DevCtrl', function ($scope, $http, $log,$document, ModalService,
 
   $scope.search = function (name){
     console.log(name);
-    SearchRestaurants.get(name).then(function(data){
-      console.log("Response: ", data);
-      // $scope.links.push(link);
-      // console.log("scope links", $scope.links);
-    })
+    console.log(SearchRestaurants.getRestaurants(name));
+    // SearchRestaurants.getRestaurants(name).then(function(data){
+    //   console.log("Response: ", data);
+    // })
 
   }
   //Pardon the naive logic, just wanted to get this done.
