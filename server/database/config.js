@@ -105,9 +105,9 @@ db.knex.schema.hasTable('organizations').then(function(exists) {
 
 // New table for restaurants table that gets refreshed daily.
 // This should be populated via yelp info.
-db.knex.schema.hasTable('restaurants_daily').then(function(exists) {
+db.knex.schema.hasTable('restaurantsDaily').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('restaurants_daily', function (restaurant) {
+    db.knex.schema.createTable('restaurantsDaily', function (restaurant) {
       restaurant.increments('id').primary();
       restaurant.string('name');
       restaurant.string('yelpId');
@@ -123,12 +123,12 @@ db.knex.schema.hasTable('restaurants_daily').then(function(exists) {
   }
 });
 
-db.knex.schema.hasTable('organizations_restaurants_daily').then(function(exists) {
+db.knex.schema.hasTable('organizations_restaurantsDaily').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('organizations_restaurants_daily', function (org) {
+    db.knex.schema.createTable('organizations_restaurantsDaily', function (org) {
       org.increments('id').primary();
       org.integer('organization_id').references('id').inTable('organizations').index();
-      org.integer('restaurant_daily_id').references('id').inTable('restaurants_daily').index();
+      org.integer('restaurantDaily_id').references('id').inTable('restaurantsDaily').index();
       org.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
@@ -136,13 +136,13 @@ db.knex.schema.hasTable('organizations_restaurants_daily').then(function(exists)
   }
 });
 
-db.knex.schema.hasTable('votes_daily').then(function(exists) {
+db.knex.schema.hasTable('votesDaily').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('votes_daily', function (vote) {
+    db.knex.schema.createTable('votesDaily', function (vote) {
       vote.increments('id').primary();
       vote.integer('user_id').references('id').inTable('users').index();
       vote.integer('organization_id').references('id').inTable('organizations').index();
-      vote.integer('restaurant_daily_id').references('id').inTable('restaurants_daily').index();
+      vote.integer('restaurantDaily_id').references('id').inTable('restaurantsDaily').index();
       vote.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
