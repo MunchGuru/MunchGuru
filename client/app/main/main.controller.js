@@ -44,7 +44,6 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
 
   $scope.getNumber = function(num) {
     num = Math.floor(num);
-    console.log(num);
     var newArray = new Array(num);
     return newArray;
   };
