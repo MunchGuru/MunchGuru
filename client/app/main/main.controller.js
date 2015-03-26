@@ -24,7 +24,12 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
   };
 
   $scope.select = function(num){
+    if (num === $scope.selectedValue) {
+      num = null;
+    }
+
     $scope.selectedValue = num;
+    
   };
 
   $scope.isHalf = function(num) {
