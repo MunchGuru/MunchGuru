@@ -190,6 +190,10 @@ button{
     background-color: lightgrey;
 }
 
+.going:hover {
+    background-color: limegreen !important;
+}
+
 .options {
     position: absolute;
     left: 0;

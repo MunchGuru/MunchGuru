@@ -5,11 +5,34 @@ var app = angular.module('snackReactorApp');
 app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants) {
 
   $scope.isLogged = false;
-  
+  $scope.selectedValue = 2;
   //empty array that will store three random objects.
   //used in our search function to generate results page.
-  $scope.places = [];
+  $scope.places = [
+    { id: 'gary-danko-san-francisco', name: 'Gary Danko', users: ['arianf', 'devmeyster', 'rob'],         rating: 4.5 },
+    { id: 'chipotle-san-francisco',   name: 'Chipotle',   users: ['knatsuki92', 'ThornWinters'],          rating: 3   },
+    { id: 'mc-donalds-san-francisco', name: 'McDonalds',  users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 3.5 },
+    { id: 'carl-jr-san-francisco',    name: 'Carl Jr',    users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 2.5 },
+    { id: 'subway-san-francisco',     name: 'Subway',     users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 3.5 }
+  ];
 
+
+  $scope.getNumber = function(num) {
+    num = Math.floor(num);
+    var newArray = new Array(num);
+    return newArray;
+  };
+
+  $scope.select = function(num){
+    $scope.selectedValue = num;
+  };
+
+  $scope.isHalf = function(num) {
+    console.log(num);
+    var result = Math.round(num) - Math.floor(num);
+    console.log(result);
+    return result;
+  };
 
   $scope.logout = function (){
     $scope.isLogged = !$scope.isLogged;
