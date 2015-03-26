@@ -130,6 +130,7 @@ button{
 
 .rankings-table td:first-child {
     vertical-align: top;
+    width: 180px;
     padding-bottom: 15px;
 }
 
