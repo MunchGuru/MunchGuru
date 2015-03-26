@@ -274,11 +274,12 @@ angular.module('snackReactor-services',[])
     });
   };
 
-  var addLocation = function (org) {
+  var addLocation = function (restaurant) {
+    console.log(restaurant);
     return $http({
       method: 'POST',
-      url: '/api/dailyloc/'+org,
-      data: { org: org }
+      url: '/api/dailyloc/',
+      data: { restaurant: restaurant }
     })
     .then(function (resp) {
       return resp.data;

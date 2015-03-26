@@ -13,64 +13,19 @@
           <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" placeholder="Type restaurant name to add to the list...">  
           <button id="search" ng-click="search(restaurant)">Search</button>
         </form>
-        <div>
-          <ul>
-          </ul>
-        </div>
+        <ul class = "search-results">
+          <li ng-repeat="restaurant in results.businesses">
+            <div ng-click="addPlace(restaurant)">{{restaurant.name}} - {{restaurant.location["display_address"][0]}}</div>
+          </li>
+        </ul>
         <table class="rankings-table">
-          <tr>
-            <td><span class="go">GO</span></td>
-            <td>13</td>
+          <tr ng-repeat="(key, value) in places | orderBy : 'users.length': true " ng-click="select(key)" ng-class="{going: (key === selectedValue)}">
+            <td><span ng-class="{go: (key !== selectedValue), picked: (key === selectedValue)}">{{(key !== selectedValue)?'GO':'GOING'}}</span></td>
+            <td>{{value.users.length}}</td>
             <td>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star-half"></span>
+              <span class="fa fa-star" ng-repeat="n in getNumber(value.rating) track by $index"></span><span class="fa fa-star-half" ng-show="isHalf(value.rating)"></span>
             </td>
-            <td>Gary Danko</td>
-          </tr>
-          <tr>
-            <td><span class="go">GO</span></td>
-            <td>10</td>
-            <td>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </td>
-            <td>Chipotle</td>
-          </tr>
-          <tr class="rankings-row going">
-            <td><span class="picked">GOING</span></td>
-            <td>5</td>
-            <td>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star-half"></span>
-            </td>
-            <td>McDonald</td>
-          </tr>
-          <tr>
-            <td><span class="go">GO</span></td>
-            <td>2</td>
-            <td>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star-half"></span>
-            </td>
-            <td>Carl Jr</td>
-          </tr>
-          <tr>
-            <td><span class="go">GO</span></td>
-            <td>1</td>
-            <td>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star-half"></span>
-            </td>
-            <td>Subway</td>
+            <td>{{value.name}}</td>
           </tr>
         </table>
       </div>
