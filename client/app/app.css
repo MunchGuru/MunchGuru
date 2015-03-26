@@ -245,6 +245,11 @@ button{
     background: lightgrey;
 }
 
+.search-results li:only-child:hover {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    background: lightgrey;
+}
 
 
 #search {
