@@ -53,10 +53,11 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     $scope.results = null;
   };
 
-  $scope.search = function (name){
-    console.log(name);
-    // console.log(SearchRestaurants.getRestaurants(name));
-    $scope.results = SearchRestaurants.getRestaurants(name);
+  $scope.search = function(name){
+
+    SearchRestaurants.getRestaurants(name).then(function(response){
+      $scope.results = response;
+    });
     $scope.restaurant = null;
     // SearchRestaurants.getRestaurants(name).then(function(data){
     //   console.log("Response: ", data);
