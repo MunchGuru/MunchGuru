@@ -13,10 +13,11 @@
           <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" placeholder="Type restaurant name to add to the list...">  
           <button id="search" ng-click="search(restaurant)">Search</button>
         </form>
-        <div>
-          <ul>
-          </ul>
-        </div>
+        <ul class = "search-results">
+          <li ng-repeat="restaurant in results.businesses">
+            <div ng-click="addPlace(restaurant)">{{restaurant.name}} - {{restaurant.location["display_address"][0]}}</div>
+          </li>
+        </ul>
         <table class="rankings-table">
           <tr ng-repeat="(key, value) in places | orderBy : 'users.length': true " ng-click="select(key)" ng-class="{going: (key === selectedValue)}">
             <td><span ng-class="{go: (key !== selectedValue), picked: (key === selectedValue)}">{{(key !== selectedValue)?'GO':'GOING'}}</span></td>
