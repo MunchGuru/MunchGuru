@@ -48,6 +48,10 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     return newArray;
   };
 
+  $scope.select = function(num){
+    $scope.selectedValue = num;
+  };
+
   $scope.isHalf = function(num) {
     console.log(num);
     var result = Math.round(num) - Math.floor(num);

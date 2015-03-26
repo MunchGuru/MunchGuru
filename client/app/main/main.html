@@ -18,7 +18,7 @@
           </ul>
         </div>
         <table class="rankings-table">
-          <tr ng-repeat="(key, value) in places | orderBy : 'users.length': true ">
+          <tr ng-repeat="(key, value) in places | orderBy : 'users.length': true " ng-click="select(key)" ng-class="{going: (key === selectedValue)}">
             <td><span ng-class="{go: (key !== selectedValue), picked: (key === selectedValue)}">{{(key !== selectedValue)?'GO':'GOING'}}</span></td>
             <td>{{value.users.length}}</td>
             <td>
