@@ -278,6 +278,19 @@ button{
     border-radius: 5px;
 }
 
+.restaurant-info {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.accordion-style {
+    border: none;
+    background-color: white !important;
+    color: black;
+    font-size: 1.5em;
+}
+
 #reshuffle {
     /*width: 60px;*/
     margin-top: 5%;
@@ -383,9 +396,30 @@ button{
     font-weight: lighter;
     margin-left: auto;
 }
-.panel-body {
-    background-color: rgba(0,0,0,.1);
 
+.panel-default {
+  color: #333 !important;
+  background-color: white !important;
+  border-color: white !important;
+  border-top: none;
+}
+
+
+
+.panel-heading {
+  color: #333 !important;
+  background-color: white !important;
+  border-color: white !important;
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: none;
+}
+
+.panel-body {
+    background-color: white;
+    border-top: white;
+    border-top-color: white;
 }
 .modal-body-md{
     margin: 50px;
@@ -429,6 +463,10 @@ button{
     float: right;
     margin-top: .25em;
     margin-right: .4em;
+}
+
+.panel-heading {
+    background-color: white;
 }
 
 .panel-title {

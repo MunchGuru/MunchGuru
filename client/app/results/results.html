@@ -1,31 +1,30 @@
 <div ng-controller="ResultsCtrl">
       <div class="overlay"></div>
-      <div class="container">
-           <div ng-controller="AddModal" class="row">
-              <div class="col-xs-12">
-                <div class="resultsOptions">
-                  <button class="nav-button" id="reshuffle" ng-click="reshuffle()">Get 3 More</button>
-                  <a href="/restaurant/create"><button id="addRest" class="nav-button pull-right">Add Restaurant</button></a>
-                </div>
-              </div>
-            </div>
-
-      
+      <div class="container">      
         <div class="row">
         <!--begin ng-repeat-->
-        <div ng-repeat="restaurant in restaurants">
+        <div>
+          <div class="col-xs-12 col-sm-12 col-md-4">
+          </div>
           <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="box">
-            <div class="box-header" ng-style= "{'background-image': 'url(' + restaurant.photo_url + ')'}"></div>
-              <accordion close-others="oneAtATime">
-                <accordion-group heading="{{restaurant.name}}">
-                  <p>{{restaurant.name}}</p>
-                  <p>Your colleagues' rating: <rating ng-model="restaurant.avgRating" max="5" id="rating" state-on="'fa fa-star star-rating fa-2x'" state-off="'fa fa-star-o star-rating fa-2x'" class="pull-right" class="rating" readonly="true"></p>
-                  <p>{{restaurant.address}}</p>
-                  <p>About this place: {{restaurant.description}}</p>
-                  <p>Rate this restaurant: <rating ng-model="restaurant.userRating" max="5" id="rating" state-on="'fa fa-star star-rating fa-2x'" state-off="'fa fa-star-o star-rating fa-2x'" class="pull-right" class="rating" on-hover="hoverRating(value)" on-leave="hoverRating(6); sendRating(restaurant.id, restaurant.userRating);"></p>
+            <div class="box-header" ng-style= "{'background-image': 'url(' + restaurants[0].photo_url + ')'}"></div>
+            <div class="restaurant-info">
+              <h4>{{restaurants[0].name}}</h4>
+              <p>Your colleagues' rating: <rating ng-model="restaurants[0].rating" max="5" id="rating" state-on="'fa fa-star star-rating fa-2x'" state-off="'fa fa-star-o star-rating fa-2x'" class="pull-right" class="rating" readonly="true"></p>
+              <p>About this place: {{restaurants[0].description}}</p>
+              <button id="search" ng-click="dislike(restaurants[0]); status.open = !status.open">Dislike</button>
+              <button id="search" ng-click="status.open = !status.open">Like</button>
+              
+              <accordion>
+                <accordion-group is-open="status.open" class="accordion-style">
+                        
+                  <p>People going:</p>
+                  <div ng-repeat="user in restaurants[0].users">{{user}}</div>
+                  <button class="go" ng-click="go('/')">Go!</button>
                 </accordion-group>
               </accordion>
+            </div>
             </div>
            </div>   
           </div> 
