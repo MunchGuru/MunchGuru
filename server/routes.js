@@ -16,6 +16,10 @@ module.exports = function(app) {
   app.use('/org', require('./api/organization'));
   app.use('/api/search', require('./api/yelp'));
   
+
+  // new APIs
+  // app.use('/api/sendvote', require('./api/sendvote')); 
+  // app.use('/api/dailyloc', require('./api/dailyloc')); 
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
