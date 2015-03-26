@@ -24,7 +24,7 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     var x = SharedData.get('orgId');
     console.log(x);
     SearchRestaurants.addLocation(newLoc);
-
+    $scope.results = null;
   };
 
   $scope.search = function (name){
