@@ -20,7 +20,7 @@ var request_yelp = function (set_parameters, callback) {
   
   var default_parameters = {
     location: 'San+Francisco',
-    sort: '2'
+    sort: '0'
   };
 
   var required_parameters = {
