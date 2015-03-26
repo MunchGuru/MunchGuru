@@ -9,43 +9,21 @@ var n = require('nonce')();
 var request = require('request');
 var qs = require('querystring');
 var _ = require('lodash');
-//var localVar = require('../config/local.env');
+
 
 var url = 'http://yelpvisualization.azurewebsites.net/api';
 
-var get = function(res, request){
-    
-	console.log(process.env.oauth_consumer_key);
-	url+=request;
-	http.get(url, function(response) {
-    
-    var chunkData = '';
-
-    response.on('data', function(chunk) {
-        chunkData += chunk;
-    });
-
-    response.on('end', function() {
-        var data = JSON.parse(chunkData);
-        res.send(200,data);
-    });
-
-	}).on('error', function(e) {
-	      console.error("YELP API GET ERROR: ", e);
-	});
-}
-//router.route('/:cat?/:hood?/').get(function(req, res) {
 router.get('/:search?', function(req, res){
 	console.log(req.params.search);
-	request_yelp(req.params.search, function(err, rep, body){
+	request_yelp({term: req.params.search}, function(err, rep, body){
         res.send(200,JSON.parse(rep.body).businesses);
 	})
 });
 
 module.exports = router;
 
-
-
+//yelp request function
+//this is not set to request_yelp 
 function request_yelp (set_parameters, callback) {
   'use strict';
   var httpMethod = 'GET';
@@ -83,79 +61,3 @@ function request_yelp (set_parameters, callback) {
   });
 
 };
-
-
-
-
-
-
-/*
-
-
-// Yelp API Caller
-
-var oauthSignature = require('oauth-signature');
-var n = require('nonce')();
-var request = require('request');
-var qs = require('querystring');
-var _ = require('lodash');
-
-
-var list_hoods = function(set_parameters, callback) {
-  'use strict';
-  var hoods = [];
-  request_yelp(set_parameters, function(err, response, body){
-    var batch_1 = JSON.parse(body);
-    _.forEach(batch_1.businesses, function(value) {
-      if(value.location.neighborhoods){
-        hoods = hoods.concat(value.location.neighborhoods);
-      }
-    });
-
-    // Get 20-40 as well
-
-    set_parameters.offset = 20;
-    request_yelp(set_parameters, function(err, response, body){
-      var batch_2 = JSON.parse(body);
-      _.forEach(batch_2.businesses, function(value) {
-        if(value.location.neighborhoods){
-          hoods = hoods.concat(value.location.neighborhoods);
-        }
-      });
-    
-      callback(_.uniq(hoods));
-    });
-
-  });
-};
-
-var list_hoods_data = function(data, cat) {
-  'use strict';
-  var hoods = [];
-  _.forEach(data.businesses, function(value) {
-    if(value.location.neighborhoods){
-      hoods = hoods.concat(value.location.neighborhoods);
-    }
-  });
-
-  hoods = _.uniq(hoods);
-
-  _.forEach(hoods, function(value, key) {
-    hoods[key] = {
-      display: value,
-      escape: qs.escape(value),
-      uri: '/api/' + cat + '/' + qs.escape(value)
-    };
-  });
-
-  data.hoods = hoods;
-  return data;
-};
-
-exports.request_yelp = request_yelp;
-exports.list_hoods = list_hoods;
-exports.list_hoods_data = list_hoods_data;
-
-
-
-*/
