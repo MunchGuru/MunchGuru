@@ -49,7 +49,7 @@ var request_yelp = function (set_parameters, callback) {
 
 router.get('/:search?', function(req, res){
 	request_yelp({term: req.params.search}, function(err, rep, body){
-    res.json(200,body);
+    res.json(200,JSON.parse(body));
 	})
 });
 
