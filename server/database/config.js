@@ -34,24 +34,24 @@ db.knex.schema.hasTable('users').then(function(exists) {
   }
 });
 
-db.knex.schema.hasTable('organizations').then(function(exists) {
-  if (!exists) {
-    db.knex.schema.createTable('organizations', function (organization) {
-      organization.increments('id').primary();
-      organization.string('name');
-      organization.string('address');
-      organization.string('place_id');
-      organization.string('github_id');
-      organization.json('github_profile');
-      organization.float('location_lat');
-      organization.float('location_long');
-      organization.string('domain');
-      organization.timestamps();
-    }).then(function (table) {
-      console.log('Created Table', table);
-    });
-  }
-});
+// db.knex.schema.hasTable('organizations').then(function(exists) {
+//   if (!exists) {
+//     db.knex.schema.createTable('organizations', function (organization) {
+//       organization.increments('id').primary();
+//       organization.string('name');
+//       organization.string('address');
+//       organization.string('place_id');
+//       organization.string('github_id');
+//       organization.json('github_profile');
+//       organization.float('location_lat');
+//       organization.float('location_long');
+//       organization.string('domain');
+//       organization.timestamps();
+//     }).then(function (table) {
+//       console.log('Created Table', table);
+//     });
+//   }
+// });
 
 db.knex.schema.hasTable('locations').then(function(exists) {
   if (!exists) {
@@ -61,7 +61,7 @@ db.knex.schema.hasTable('locations').then(function(exists) {
       location.string('yelp_id');
       location.double('rating');
       location.text('imgUrl');
-      location.integer('organization_id').references('id').inTable('organizations').index();
+      location.integer('organization_id');
       location.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
@@ -73,8 +73,8 @@ db.knex.schema.hasTable('votes').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('votes', function (vote) {
       vote.increments('id').primary();
-      vote.integer('user_id').references('id').inTable('users').index();
-      vote.integer('organization_id').references('id').inTable('organizations').index();
+      vote.integer('user_id'); //Note: this isn't related to the user table
+      vote.integer('organization_id');
       vote.integer('location_id').references('id').inTable('location').index();
       vote.timestamps();
     }).then(function (table) {
