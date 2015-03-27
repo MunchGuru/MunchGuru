@@ -10,18 +10,19 @@
             <div class="box">
             <div class="box-header" ng-style= "{'background-image': 'url(' + restaurants[0].photo_url + ')'}"></div>
             <div class="restaurant-info">
-              <h4>{{restaurants[0].name}}</h4>
-              <p>Your colleagues' rating: <rating ng-model="restaurants[0].rating" max="5" id="rating" state-on="'fa fa-star star-rating fa-2x'" state-off="'fa fa-star-o star-rating fa-2x'" class="pull-right" class="rating" readonly="true"></p>
-              <p>About this place: {{restaurants[0].description}}</p>
-              <button id="search" ng-click="dislike(restaurants[0]); status.open = !status.open">Dislike</button>
-              <button id="search" ng-click="status.open = !status.open">Like</button>
-              
+              <h2 class="browse-h2">{{restaurants[0].name}}</h2>
+              <p class="restaurant-info-header">Rating: <rating ng-model="restaurants[0].rating" max="5" id="rating" state-on="'fa fa-star star-rating fa-2x'" state-off="'fa fa-star-o star-rating fa-2x'" class="pull-right" class="rating" readonly="true"></p>
+              <button id="browse" ng-click="dislike(restaurants[0]); status.open = false">Dislike</button>
+              <button id="browse" ng-click="status.open = !status.open">Like</button>
               <accordion>
                 <accordion-group is-open="status.open" class="accordion-style">
-                        
                   <p>People going:</p>
-                  <div ng-repeat="user in restaurants[0].users">{{user}}</div>
-                  <button class="go" ng-click="go('/')">Go!</button>
+                  <div ng-repeat="user in restaurants[0].users">
+                  <ul>
+                    <li>{{user}}</li>
+                  </ul>
+                  </div>
+                  <button class="browse-go" ng-click="go('/')">Go!</button>
                 </accordion-group>
               </accordion>
             </div>

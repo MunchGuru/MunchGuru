@@ -173,6 +173,18 @@ button{
     color: white;
     font-weight: bolder;
 }
+
+.browse-go {
+    font-size: 1em;
+    padding: 10px;
+    /*border: solid thick green;*/
+    background-color: limegreen;
+    border-radius: 10px;
+    width: 282px;
+    color: white;
+    font-weight: bolder;
+}
+
 .picked {
     font-size: .5em;
     padding: 10px;
@@ -256,6 +268,26 @@ button{
     background: lightgrey;
 }
 
+#browse {
+    cursor: pointer;
+    /*font-weight: lighter;*/
+    -webkit-appearance: none;
+    appearance: none;
+    font-weight: bolder;
+    background: #FF2538;
+    position: relative;
+    /*box-sizing: content-box ;*/
+    width: 120px;
+    height: 30px;
+    border-width: 0;
+    transition: all .3s linear;
+    margin:10px 0 10px 15px;
+    outline: none;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.5em;
+    border-radius: 5px;
+}
 
 #search {
     cursor: pointer;
@@ -282,6 +314,18 @@ button{
     background-color: white;
     border-radius: 5px;
     padding: 10px;
+}
+.restaurant-info-header {
+    font-size: 26px;
+    margin: 0 27px 5px 16px;
+}
+
+#rating {
+    font-size: 20px;
+}
+
+.browse-h2 {
+    text-align: center;
 }
 
 .accordion-style {
@@ -410,8 +454,11 @@ button{
   color: #333 !important;
   background-color: white !important;
   border-color: white !important;
+  padding: 0px;
 }
-
+.panel-group {
+  margin-bottom: 0px;
+}
 .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
   border-top: none;
 }
