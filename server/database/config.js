@@ -86,7 +86,7 @@ db.knex.schema.hasTable('votes').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('votes', function (vote) {
       vote.increments('id').primary();
-      vote.integer('user_id'); //Note: this isn't related to the user table
+      vote.text('user_info'); //Note: this isn't related to the user table
       vote.integer('organization_id');
       vote.integer('location_id').references('id').inTable('location').index();
       vote.timestamps();
