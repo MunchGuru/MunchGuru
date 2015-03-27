@@ -17,7 +17,7 @@ app.controller('SelectOrgCtrl', function ($scope, $modal, $log, CheckLoggedIn, M
       templateUrl: '1.html',
       controller: '2Ctrl',
       size: size,
-      backdrop: 'static',
+      backdrop: true,
       resolve: {
         items: function () {
           return $scope.items;
@@ -42,14 +42,26 @@ app.controller('2Ctrl', function ($scope, $modalInstance, items, OrgSelect, $loc
     $scope.githubOrgs.forEach(function(org){
       org.submitting = false;
     });
+
   });
 
   $scope.selectOrg = function(orgId, orgLogin, repeatScope){
     repeatScope.org.submitting = true;
-    OrgSelect.setGithubOrg(orgId, orgLogin, $location, $state)
-    .then(function(){
-      repeatScope.org.submitting = false;
-    });
+    // OrgSelect.setGithubOrg(orgId, orgLogin, $location, $state);
+    // $modalInstance.close();
+    // $modalInstance.dismiss('cancel');
+    $location.path('/');
+    // $location.path('/').
+    $modalInstance.close();
+    $modalInstance.close();
+    $modalInstance.dismiss('cancel');
+    $modalInstance.dismiss('cancel');
+
+    $modalInstance.close();
+    $modalInstance.dismiss('cancel');
+    $modalInstance.dismiss('cancel');
+    // ;//ideally we'll figure out how to close that fucking modal
+
   };
  
   $scope.ok = function () {

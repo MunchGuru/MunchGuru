@@ -23,13 +23,6 @@ angular.module('snackReactorApp', [
     });
 
     $stateProvider
-     .state('dev', {
-      url: '/dev',
-      templateUrl: 'app/dev/dev.html',
-      controller: 'DevCtrl'
-    }); 
-
-    $stateProvider
      .state('results', {
       url: '/results',
       templateUrl: 'app/results/results.html',

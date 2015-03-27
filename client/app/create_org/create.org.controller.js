@@ -3,7 +3,7 @@
 var app = angular.module('snackReactorApp');
 //refactor to services
 
-app.controller('CreateOrgCtrl', function ($scope, $modal, $log, CheckLoggedIn, ModalService) {
+app.controller('CreateOrgCtrl', function ($scope, $modal, $location, $log, CheckLoggedIn, ModalService) {
   $scope.items = [];
 
   $scope.open = function (size) {
@@ -22,8 +22,11 @@ app.controller('CreateOrgCtrl', function ($scope, $modal, $log, CheckLoggedIn, M
       $scope.selected = selectedItem;
     });
   };
+  // ModalService.dismiss('cancel');
 
-  $scope.open('md');
+  $location.path('/');
+
+  // $scope.open('md');
 
 });
 
@@ -49,7 +52,7 @@ app.controller('3Ctrl', function ($scope, $modalInstance, items, OrgSelect, $loc
       console.log('success');
       $scope.submitting = false;
       $location.path('/');
-      $location.search({github_login: null, github_id: null});
+      // $location.search({github_login: null, github_id: null});
       window.location.reload();//ideally we'll figure out how to close that fucking modal
     })
     .error(function(data, status, headers, config){

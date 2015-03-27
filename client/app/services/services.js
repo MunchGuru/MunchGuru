@@ -110,6 +110,7 @@ angular.module('snackReactor-services',[])
   instance.getGithubOrgs = function(){
     return $http.get('/user/getorgs/github')
     .success(function(data, status, headers, config){
+      console.log('here: ', data);
       return data.orgs;
     })
     .error(function(data,status,headers,config){
@@ -118,36 +119,41 @@ angular.module('snackReactor-services',[])
   };
 
   instance.setGithubOrg = function(orgId, orgLogin, $location, $state){
-    return $http.post('/user/setorg/github', {orgId: orgId})
-    .success(function(data,status,headers,config){
-      if (data.create){
-        $location.path('/org/create').search({github_id: orgId, github_login: orgLogin}); //send them to the create flow, preserving github org name
-      }
-      else {
-        $location.path('/');
-        window.location.reload();
-      }
-    })
-    .error(function(data,status,headers,config){
-      console.error('Error posting org: ' + data);
-    });
+    $location.path('/'); //send them to the create flow, preserving github org name
+    window.location.reload();
+    // return $http.post('/user/setorg/github', {orgId: orgId})
+    // .success(function(data,status,headers,config){
+    //   if (data.create){
+    //     $location.path('/'); //send them to the create flow, preserving github org name
+    //     window.location.reload();
+
+    //   }
+    //   else {
+    //     $location.path('/');
+    //     window.location.reload();
+    //   }
+    // })
+    // .error(function(data,status,headers,config){
+    //   console.error('Error posting org: ' + data);
+    // });
   };
 
-  instance.getGithubOrgInfo = function(login, token){
+  // instance.getGithubOrgInfo = function(login, token){
 
-    return $http.get('https://api.github.com/orgs/' + login, {
-      headers: {
-        'Authorization': 'token ' + token
-      }
-    })
-    .success(function(data,status,headers,config){
-        return data;
-    })
-    .error(function(data,status,headers,config){
-        console.error('Error getting organization info from Github ' + data);
-      });
+  //   return $http.get('https://api.github.com/orgs/' + login, {
+  //     headers: {
+  //       'Authorization': 'token ' + token
+  //     }
+  //   })
+  //   .success(function(data,status,headers,config){
+  //     console.log('data', data);
+  //       return data;
+  //   })
+  //   .error(function(data,status,headers,config){
+  //       console.error('Error getting organization info from Github ' + data);
+  //     });
 
-  };
+  // };
 
   instance.getAccessToken = function(){
     return $http.get('/user/token')
