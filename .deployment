@@ -1,2 +1,2 @@
 [config]
-command = bash azure_push.sh
+command = bash deploy.sh
