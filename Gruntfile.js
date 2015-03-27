@@ -157,7 +157,7 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: ['server/database/snackreactordb.sqlite', '.tmp']
     },
 
     // Add vendor prefixed styles
