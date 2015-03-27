@@ -1,21 +1,23 @@
-<div ng-controller="SelectOrgCtrl" class="main">
-    <script type="text/ng-template" id="1.html">
-
-        <div class="modal-header">
-            <h5 class="modal-title-md">Please select an organization.</h5>
+<div ng-controller="MainCtrl" class="main">
+  <div class="overlay"></div>
+    <div class="content">
+        <a id="logout" href="/auth/logout" ng-hide="isLogged" target="_self">Logout</a>
+        <!-- <a href="/restaurant/create" target="_self">Create a Restaurant</a> -->
+        <div class="headline">
+            <h2>Please select an organization</h2>
         </div>
-        <div class="modal-body-md">
-        <span class="h5">SnackReactor is all about knowledge from your friends and colleagues. Please choose an organization to join; you can only choose one.</span>
-          <div ng-repeat="org in githubOrgs">
-            <a ng-click="selectOrg(org.id, org.login, this)" class="blacktext">
-                <div class="org">
-                    <img src="{{org.avatar_url}}" class="org-img img-circle">
-                    <span class="org-name h3">{{org.login}}</span>
-                    <i class="fa fa-sign-out fa-4x org-go" ng-hide="org.submitting"></i>
-                    <i class="fa fa-circle-o-notch fa-spin fa-4x org-go" ng-show="org.submitting"></i>
-                </div>
-            </a>
-          </div>
-        </div>   
-    </script>
+        
+        <div class="orgList">
+            <div ng-repeat="org in githubOrgs" >
+                <a ng-click="selectOrg(org.id, org.login, this)" class="orglink">
+                    <div class="org">
+                        <img src="{{org.avatar_url}}" class="org-img img-circle">
+                        <span class="org-name h3">{{org.login}}</span>
+                        <i class="fa fa-sign-out fa-4x org-go" ng-hide="org.submitting"></i>
+                        <i class="fa fa-circle-o-notch fa-spin fa-4x org-go" ng-show="org.submitting"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>   
 <div>

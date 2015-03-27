@@ -83,7 +83,7 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
   };
 });
 
-app.controller('ModalCtrl', function ($scope, $modal, $log, CheckLoggedIn) {
+app.controller('ModalCtrl', function ($scope, $modal, $log, CheckLoggedIn, SharedData, $location) {
   $scope.items = [];
   $scope.open = function (size) {
     var modalInstance = $modal.open({
@@ -107,6 +107,9 @@ app.controller('ModalCtrl', function ($scope, $modal, $log, CheckLoggedIn) {
   if (!result.data){
     $scope.logout();
     $scope.open();
+  }
+  if(SharedData.get('orgId') === undefined){
+    $location.path('/select_org');
   }
  });
 
