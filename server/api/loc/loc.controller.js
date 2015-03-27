@@ -58,13 +58,16 @@ exports.loc = {
             collection.forEach(function(model){
               users.push(model.get('user_info'));
             });
-            locArray.push(new LocItem(locId, locName, users, rating));
+            var newLocItem = new LocItem(locId, locName, users, rating);
+            console.log(newLocItem);
+            locArray.push(newLocItem);
           })
         });
       });
-    }).then(function(){
+    })
+    .then(function(){
             res.status(200).json({result: locArray});
-          });;
+          });
 
 
 
