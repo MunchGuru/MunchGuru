@@ -15,22 +15,6 @@ angular.module('snackReactor-services',[])
     });
   };
 }])
-.factory('githubProfileInfo', function($http){
-
-  var gitData = function (username) {
-    return $http({
-      method: 'GET',
-      url: 'http://api.github.com/users/'+username,
-    })
-    .then(function (resp) {
-      return resp.data;
-    });
-  };
-
-  return {
-    gitData: gitData
-  };
-})
 .factory('SearchRestaurants', ['$http', '$location', function($http, $location){
   
   var getRestaurants = function (value) {

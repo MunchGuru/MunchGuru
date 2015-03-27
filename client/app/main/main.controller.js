@@ -2,7 +2,7 @@
 
 var app = angular.module('snackReactorApp');
 //refactor to services
-app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants, SharedData, githubProfileInfo) {
+app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants, SharedData) {
 
   $scope.isLogged = false;
   $scope.selectedValue = 2;
@@ -33,13 +33,6 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     }
 
     $scope.selectedValue = num;
-  };
-
-  $scope.getInfo = function(username){
-    // return githubProfileInfo.gitData(username).then(function(response){
-    return 'https://avatars.githubusercontent.com/u/7397857?v=3';
-    //   return response.avatar_url;
-    // });
   };
 
   $scope.isHalf = function(num) {
