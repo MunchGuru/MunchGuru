@@ -153,7 +153,8 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*',
             '!<%= yeoman.dist %>/.openshift',
-            '!<%= yeoman.dist %>/Procfile'
+            '!<%= yeoman.dist %>/Procfile',
+            'server/database/snackreactordb.sqlite'
           ]
         }]
       },
