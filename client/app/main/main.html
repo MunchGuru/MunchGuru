@@ -2,12 +2,13 @@
   <div class="overlay"></div>
     <div class="content">
     <a id="logout" href="/auth/logout" ng-hide="isLogged" target="_self">Logout</a>
-    <a href="/restaurant/create" target="_self">Create a Restaurant</a>
+    <!-- <a href="/restaurant/create" target="_self">Create a Restaurant</a> -->
       <div class="headline">
         <h1>Munch Guru</h1>
         <p class="subtitle">Find the best places to eat near your work or school.</p>
       </div>
-
+      <a type="button" href="/results" target="_self">Discover Restaurant</a>
+      <!-- <button id="search" ng-click="$location.path('#/discover')">Discover</button> -->
       <div class="list">
         <form name="searchForm">
           <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" placeholder="Type restaurant name to add to the list...">  
