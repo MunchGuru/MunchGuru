@@ -41,6 +41,7 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     $scope.isLogged = !$scope.isLogged;
   };
 
+
   $scope.addPlace = function (restaurant){
     console.log($scope);
     var newLoc = {id: restaurant.id, name: restaurant.name, rating: restaurant.rating};
@@ -54,6 +55,10 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
 
     $scope.results = null;
 
+  };
+
+  $scope.go = function ( path ) {
+    $location.path( path );
   };
 
   $scope.search = function(name){
