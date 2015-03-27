@@ -60,7 +60,8 @@ db.knex.schema.hasTable('locations').then(function(exists) {
       location.string('name');
       location.string('yelp_id');
       location.double('rating');
-      location.text('url');
+      location.text('imgUrl');
+      location.integer('organization_id').references('id').inTable('organizations').index();
       location.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
