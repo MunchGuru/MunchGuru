@@ -15,6 +15,7 @@ module.exports = function(app) {
   app.use('/user', require('./api/user'));
   app.use('/org', require('./api/organization'));
   app.use('/api/search', require('./api/yelp'));
+  app.use('/api/dailyloc', require('./api/dailyloc'));
   
 
   // new APIs

@@ -14,8 +14,7 @@ var OrganizationRestaurant = db.Model.extend({
 
   organizations: function(){
     return this.belongsTo(Organization);
-  },
-
+  }
 });
 
 
