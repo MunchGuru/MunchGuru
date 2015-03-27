@@ -12,7 +12,7 @@
       <!-- <button id="search" ng-click="$location.path('#/discover')">Discover</button> -->
       <div class="list">
         <form name="searchForm">
-          <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" placeholder="Type restaurant name to add to the list...">  
+          <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" autocomplete="off" placeholder="Type restaurant name to add to the list...">  
           <button id="search" ng-click="search(restaurant)">Search</button>
         </form>
         <ul class="search-results">
