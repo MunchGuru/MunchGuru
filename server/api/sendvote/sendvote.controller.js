@@ -1,58 +1,64 @@
-// /**
-//  * Endpoints
-//  * POST    /restaurants/new     ->  create
-//  */
-
-// 'use strict';
+'use strict';
 
 // var _ = require('lodash');
 
-// var User = require('../../database/models/user');
-// var Organization = require('../../database/models/organization');
-// var Vote = require('../../database/models/vote');
+var User = require('../../database/models/user');
+var Organization = require('../../database/models/organization');
+var Location = require('../../database/models/location');
+var Vote = require('../../database/models/vote');
 
 
-// var places = require('../places/places');
-// var utils = require('../../components/utils.js');
+var places = require('../places/places');
+var utils = require('../../components/utils.js');
 
 
 
-// exports.sendvote = {
-//   // Create restuarant
-//   addVote: function(req, res) {
-//     var voteObj = {};
+exports.sendvote = {
+  // Create restuarant
+  addVote: function(req, res) {
+    var voteObj = {};
 
-//     var yelp_id = req.body.yelp_id;
-//     var gitOrg_id = req.body.github_id;
-//     var user_identifier = req.body.user_identifier; //not sure what this will be
-//     // ...
+    var yelp_id = req.body.yelp_id;
+    var gitOrg_id = req.body.github_id;
+    var user_identifier = req.body.user_identifier; //not sure what this will be
+    // ...
 
-//     // Find userid, orgid, & resDailyid
-//     new User({user_identifier: user_identifier}).fetch().then(function(found){
-//       if (!found) {
-//         res.status(409).send("You don't have permission");
-//         console.log('User not identified');
-//       } else {
-//         voteObj.userId = found.get('id');
+    // Find userid, orgid, & resDailyid
+    new User({user_identifier: user_identifier}).fetch().then(function(found){
+      if (!found) {
+        res.status(409).send("You don't have permission");
+        console.log('User not identified');
+      } else {
+        voteObj.userId = found.get('id');
 
-//         new Organization({github_id: gitOrg_id}).fetch().then(function(found){
-//           if (!found) {
-//             res.status(409).send("You don't have permission");
-//             console.log('Organization not identified');
-//           } else {
-//             voteObj.orgId = found.get('id');
+        new Organization({github_id: gitOrg_id}).fetch().then(function(found){
+          if (!found) {
+            res.status(409).send("You don't have permission");
+            console.log('Organization not identified');
+          } else {
+            voteObj.orgId = found.get('id');
 
-//             new VoteDaily({user_id: voteObj.userId, organization_id: voteObj.orgId}).fetch().then(function(found){
-//               if(found) {
-//               }
-
-//             });
-
-
-//           }
-//         });
-//       }
-//     });
+            new Location({yelp_id: yelp_id, organization_id: voteObj.orgId}).fetch().then(function(found){
+              if(!found) {
+                res.status(409).send("You don't have permission");
+                console.log('Location not identified');
+              } else {
+                voteObj.locId = found.get('id');
+                new Vote({user_id: voteObj.userId, organization_id: voteObj.orgId}).fetch().then(function(found){
+                  if(found) {
+                    found.set('location_id', voteObj.locId).save().then(function(model) {
+                      
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+  }
+}
 
 
 //     // /////////////////////////////////////////////////////
