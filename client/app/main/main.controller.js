@@ -43,20 +43,24 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
 
   $scope.addPlace = function (restaurant){
     console.log($scope);
-    var newLoc = {};
-    newLoc.id = restaurant.id;
-    newLoc.name = restaurant.name;
-    newLoc.rating = 4.3;
-    var x = SharedData.get('orgId');
-    console.log(x);
+    var newLoc = {id: restaurant.id, name: restaurant.name, rating: restaurant.rating};
+    // var x = SharedData.get('orgId');
+
     SearchRestaurants.addLocation(newLoc);
+    newLoc.users = ['arianf'];
+
+    $scope.places.push(newLoc);
+    $scope.selectedValue = $scope.places.length-1;
+
     $scope.results = null;
+
   };
 
-  $scope.search = function (name){
-    console.log(name);
-    // console.log(SearchRestaurants.getRestaurants(name));
-    $scope.results = SearchRestaurants.getRestaurants(name);
+  $scope.search = function(name){
+
+    SearchRestaurants.getRestaurants(name).then(function(response){
+      $scope.results = response;
+    });
     $scope.restaurant = null;
     // SearchRestaurants.getRestaurants(name).then(function(data){
     //   console.log("Response: ", data);
