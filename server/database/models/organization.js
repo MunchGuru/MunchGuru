@@ -1,7 +1,6 @@
 var db = require('../config');
 var User = require('./user');
-var Restaurant = require('./restaurant');
-var RestaurantDaily = require('./restaurantDaily');
+var Location = require('./location');
 
 
 var Organization = db.Model.extend({
@@ -12,12 +11,8 @@ var Organization = db.Model.extend({
     return this.hasMany(User);
   },
 
-  restaurants: function(){
-    return this.belongsToMany(Restaurant, 'organizations_restaurants', 'organization_id', 'place_id');
-  },
-
-  restaurantsDaily: function(){
-    return this.belongsToMany(RestaurantDaily, 'organizations_restaurantsDaily', 'organization_id', 'place_id');
+  locations: function(){
+    return this.belongsToMany(Location, 'locations', 'organization_id');
   }
   
 });

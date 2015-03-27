@@ -2,8 +2,7 @@ var db = require('../config');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
 var Organization = require('./organization');
-var Rating = require('./rating');
-var VoteDaily = require('./voteDaily')
+var Vote = require('./vote')
 
 
 var User = db.Model.extend({
@@ -14,12 +13,8 @@ var User = db.Model.extend({
     return this.belongsTo(Organization);
   },
 
-  voteDaily: function(){
-    return this.belongsTo(VoteDaily);
-  },
-
-  ratings: function(){
-    return this.hasMany(Rating);
+  vote: function(){
+    return this.belongsTo(Vote);
   },
 
   initialize: function(){
