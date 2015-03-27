@@ -231,6 +231,7 @@ button{
 }
 
 .going:hover {
+    cursor: pointer;
     background-color: limegreen !important;
 }
 
