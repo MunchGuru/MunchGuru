@@ -5,22 +5,13 @@ var http = require('http');
 var loc = require('../../database/models/location.js');
 
 router.get('/get', function(req, res){
-    res.json({
-	  results: [
-	    {
-	      id: 'chipotle-san-francisco',
-	      name: 'Chipotle',
-	      users: ['bob', 'sue', 'rob'],
-	      rating: 4.3
-	    },
-	    {
-	      id: 'mc-donalds-san-francisco',
-	      name: 'Mc Donalds',
-	      users: ['mike'],
-	      rating: 2.3
-	    }
-	  ]
-	});
+    res.send([
+   { id: 'gary-danko-san-francisco', name: 'Gary Danko', users: ['arianf', 'devmeyster', 'rob'],         rating: 4.5, photo_url:"http://www.hothangups.com/p7lsm_img_1/thumbs/GaryDanko_tmb.jpg" },
+   { id: 'chipotle-san-francisco',   name: 'Chipotle',   users: ['knatsuki92', 'ThornWinters'],          rating: 3,   photo_url:"http://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1024px-Chipotle_Mexican_Grill_logo.svg.png" },
+   { id: 'mc-donalds-san-francisco', name: 'McDonalds',  users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 3.5, photo_url:"http://img1.wikia.nocookie.net/__cb20100717060808/logopedia/images/a/a9/Mcdonalds-90s-logo.svg" },
+   { id: 'carl-jr-san-francisco',    name: 'Carl Jr',    users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 2.5, photo_url:"https://fastfoodmenuprice.com/wp-content/uploads/2014/11/carls.jpeg"},
+   { id: 'subway-san-francisco',     name: 'Subway',     users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 3.5, photo_url:"http://fontmeme.com/images/Subway-Logo.jpg" }
+ ]);
   res.end();
 });
 router.get('/set', function(req, res){
