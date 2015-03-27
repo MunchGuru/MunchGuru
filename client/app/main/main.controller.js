@@ -33,6 +33,9 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
   ];
 
   $scope.showGoing = function(num) {
+    if($scope.showVisting === num){
+      num = -2;
+    }
     $scope.showVisting = num;
   };
 
@@ -46,6 +49,7 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     if (num === $scope.selectedValue) {
       num = null;
     }
+    $scope.showVisting = -2;
 
     $scope.selectedValue = num;
   };
