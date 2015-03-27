@@ -2,10 +2,11 @@
 
 var app = angular.module('snackReactorApp');
 //refactor to services
-app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants, SharedData) {
+app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants, SharedData, githubProfileInfo) {
 
   $scope.isLogged = false;
   $scope.selectedValue = 2;
+  $scope.showVisting = -2;
   //empty array that will store three random objects.
   //used in our search function to generate results page.
   $scope.places = [
@@ -16,6 +17,9 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     { id: 'subway-san-francisco',     name: 'Subway',     users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 3.5 }
   ];
 
+  $scope.showGoing = function(num) {
+    $scope.showVisting = num;
+  };
 
   $scope.getNumber = function(num) {
     num = Math.floor(num);
@@ -29,7 +33,13 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
     }
 
     $scope.selectedValue = num;
-    
+  };
+
+  $scope.getInfo = function(username){
+    // return githubProfileInfo.gitData(username).then(function(response){
+    return 'https://avatars.githubusercontent.com/u/7397857?v=3';
+    //   return response.avatar_url;
+    // });
   };
 
   $scope.isHalf = function(num) {

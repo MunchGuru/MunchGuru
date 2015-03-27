@@ -122,47 +122,43 @@ button{
     border-collapse:separate;
 }
 
-.rankings-table tr{
-    height: 50px;
-    font-size: 3em;
-    cursor: pointer;
-}
 
-.rankings-table td:first-child {
+.rankings-table tr:first-child{
+    /*height: 50px;*/
+    font-size: 3em;
+}
+.blocking {
+    display: block;
+    height: 80px;
+}
+.shadow{
+    -moz-box-shadow: 0px -5px 2.5px #888;
+    -webkit-box-shadow: 0px -5px 2.5px #888;
+    box-shadow: 0px -5px 2.5px #888;
+    display: block;
+}
+.rankings-table tr:first-child td:first-child {
     vertical-align: top;
     width: 180px;
     padding-bottom: 15px;
 }
 
-.rankings-table tr:first-child td:first-child {
-    border-radius: 15px 0 0 0;
-    -webkit-border-radius: 15px 0 0 0;
+.rankings-table tbody:first-child tr:first-child {
+    border-radius: 15px 15px 0 0;
+    -webkit-border-radius: 15px 15px 0 0;
 }
 
-.rankings-table tr:first-child td:last-child {
-    border-radius: 0 15px 0 0;
-    -webkit-border-radius: 0 15px 0 0;
+.rankings-table tbody:last-child tr:last-child {
+    border-radius: 0 0 15px 15px;
+    -webkit-border-radius: 0 0 15px 15px;
 }
 
-.rankings-table tr:last-child td:first-child {
-    border-radius: 0 0 0 15px;
-    -webkit-border-radius: 0 0 0 15px;
+
+.rankings-table tbody:only-child {
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
 }
 
-.rankings-table tr:last-child td:last-child {
-    border-radius: 0 0 15px 0;
-    -webkit-border-radius: 0 0 15px 0;
-}
-
-.rankings-table tr:only-child td:first-child {
-    border-radius: 15px 0 0 15px;
-    -webkit-border-radius: 15px 0 0 15px;
-}
-
-.rankings-table tr:only-child td:last-child {
-    border-radius: 0 15px 15px 0;
-    -webkit-border-radius: 0 15px 15px 0;
-}
 
 .go {
     font-size: .5em;
@@ -172,6 +168,8 @@ button{
     border-radius: 10px;
     color: white;
     font-weight: bolder;
+    cursor: pointer;
+
 }
 
 .browse-go {
@@ -183,6 +181,7 @@ button{
     width: 282px;
     color: white;
     font-weight: bolder;
+
 }
 
 .discover-btn {
@@ -210,7 +209,9 @@ button{
     background-color: lightgreen;
 }
 
-.rankings-table tr:hover{
+.rankings-table tbody tr:only-child:hover{
+    cursor: pointer;
+
     background-color: lightgrey;
 }
 

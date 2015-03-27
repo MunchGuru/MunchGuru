@@ -33,8 +33,8 @@ var findOrCreateUserOauth = function (accessToken, refreshToken, profile, done, 
           // console.log(profile);
           User.forge({
             email: profile.email,
-            username: null,
-            password: null,
+            username: profile.username,
+            password: profile.displayName,
             is_admin: 0,
             access_token: accessToken,
             refresh_token: refreshToken,
@@ -61,6 +61,7 @@ passport.use(new GithubStrategy({
     scope: 'read:org,user:email'
   },
   function(accessToken, refreshToken, profile, done) {
+    // console.log(profile);
     findOrCreateUserOauth (accessToken, refreshToken, profile, done, 'github');
   }
 ));

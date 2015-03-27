@@ -15,20 +15,31 @@
           <input id="searchbar" type="text" name="restaurant" ng-model="restaurant" placeholder="Type restaurant name to add to the list...">  
           <button id="search" ng-click="search(restaurant)">Search</button>
         </form>
-        <ul class = "search-results">
+        <ul class="search-results">
           <li ng-repeat="restaurant in results.businesses">
             <div ng-click="addPlace(restaurant)">{{restaurant.name}} - {{restaurant.location["display_address"][0]}}</div>
           </li>
         </ul>
         <table class="rankings-table">
-          <tr ng-repeat="(key, value) in places | orderBy : 'users.length': true " ng-click="select(key)" ng-class="{going: (key === selectedValue)}">
-            <td><span ng-class="{go: (key !== selectedValue), picked: (key === selectedValue)}">{{(key !== selectedValue)?'GO':'GOING'}}</span></td>
-            <td>{{value.users.length}}</td>
-            <td>
-              <span class="fa fa-star" ng-repeat="n in getNumber(value.rating) track by $index"></span><span class="fa fa-star-half" ng-show="isHalf(value.rating)"></span>
-            </td>
-            <td>{{value.name}}</td>
-          </tr>
+          
+          <tbody ng-repeat="(key, value) in places | orderBy : 'users.length': true " >
+            <tr ng-class="{going: (key === selectedValue), shadow: (key === showVisting+1)}" class="blocking">
+              <td style="width: 180px;" ng-click="select(key)"><span ng-class="{go: (key !== selectedValue), picked: (key === selectedValue)}">{{(key !== selectedValue)?'GO':'GOING'}}</span></td>
+              <td style="width: 100px;" ng-click="showGoing(key)">{{value.users.length}}</td>
+              <td style="width: 300px;" ng-click="showGoing(key)">
+                <span class="fa fa-star" ng-repeat="n in getNumber(value.rating) track by $index"></span><span class="fa fa-star-half" ng-show="isHalf(value.rating)"></span>
+              </td>
+              <td style="width: 420px;" ng-click="showGoing(key)">{{value.name}}</td>
+            </tr>
+            <tr ng-if="key === showVisting">
+              <td colspan="4" style="border-top: dashed #888 thin ;">
+                <ul ng-repeat="(userKey, userValue) in value.users" >
+                    <li>{{userValue}}</li>
+                </ul>
+              </td>
+            </tr>
+            </div>
+          </tbody>
         </table>
       </div>
 
