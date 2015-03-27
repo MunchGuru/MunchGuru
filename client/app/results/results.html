@@ -19,7 +19,8 @@
                   <p>People going:</p>
                   <div ng-repeat="user in restaurants[0].users">
                   <ul>
-                    <li>{{user}}</li>
+                    <li class="users-attending"><img ng-src="https://avatars.githubusercontent.com/u/{{user.userid}}" class="org-img img-circle"/>{{user.display}}</li>
+                    
                   </ul>
                   </div>
                   <button class="browse-go" ng-click="go('/')">Go!</button>
