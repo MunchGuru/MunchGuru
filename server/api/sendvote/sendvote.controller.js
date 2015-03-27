@@ -20,10 +20,11 @@ exports.sendvote = {
           if(found) {
             found.set('location_id', locId).save().then(function(model) {
               console.log('Vote successfully changed');
+              res.send(200);
             });
           } else {
             new Vote({user_info: user_info, organization_id: org_id, location_id: locId}).save().then(function(model) {
-              res.status(200);
+              res.send(200);
               console.log('Vote successfuly submitted!');
             });
           }

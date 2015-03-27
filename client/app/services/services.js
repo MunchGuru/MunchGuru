@@ -15,7 +15,7 @@ angular.module('snackReactor-services',[])
     });
   };
 }])
-.factory('SearchRestaurants', ['$http', '$location', function($http, $location){
+.factory('SearchRestaurants', ['$http', '$location', 'SharedData', function($http, $location, SharedData){
   
   var getRestaurants = function (value) {
     return $http({
@@ -41,10 +41,10 @@ angular.module('snackReactor-services',[])
   };
 
   var addLocation = function (restaurant) {
-    console.log(restaurant);
+    restaurant.org_id = SharedData.get('orgId');
     return $http({
       method: 'POST',
-      url: '/api/dailyloc/',
+      url: '/api/loc/',
       data: { restaurant: restaurant }
     })
     .then(function (resp) {

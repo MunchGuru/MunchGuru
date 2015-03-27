@@ -45,32 +45,38 @@ exports.loc = {
       this.rating = rating;
     };
 
-    new Location().fetchAll().then(function(collection){
-      collection.query('where', 'organization_id', '=', org_id).fetch().then(function(collection){
+
+
+    new Location().query('where', 'organization_id', '=', org_id).fetchAll().then(function(collection){
+
+        var total = collection.length;
+        var count = 0;
         collection.forEach(function(model){
           var locId = model.get('id');
           var locName = model.get('name');
           var rating = model.get('rating');
 
           console.log('MODEL:', locId, locName, rating);
-          new Vote({location_id: locId}).fetchAll().then(function(collection){
+
+          new Vote().query('where', 'location_id', '=', locId).fetchAll().then(function(user_coll){
+            // console.log('user:', user_coll);
             var users = [];
-            collection.forEach(function(model){
+            console.log('users: ', users);
+            user_coll.forEach(function(model){
               users.push(model.get('user_info'));
+              console.log(model.get('user_info'));
             });
             var newLocItem = new LocItem(locId, locName, users, rating);
-            console.log(newLocItem);
+            // console.log(newLocItem);
             locArray.push(newLocItem);
-          })
-        });
-      });
-    })
-    .then(function(){
-            res.status(200).json({result: locArray});
+            count++
+            if(count === total){
+              res.status(200).json({result: locArray});
+            }
           });
+        });
 
-
-
+      });
   }
 };
 
