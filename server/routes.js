@@ -15,10 +15,9 @@ module.exports = function(app) {
   app.use('/org', require('./api/organization'));
   app.use('/api/search', require('./api/yelp'));
   app.use('/api/loc', require('./api/loc'));
-  
+  app.use('/api/sendvote', require('./api/sendvote'));
 
   // new APIs
-  // app.use('/api/sendvote', require('./api/sendvote')); 
   // app.use('/api/dailyloc', require('./api/dailyloc')); 
   
   // All undefined asset or api routes should return a 404
