@@ -8,7 +8,6 @@ angular.module('snackReactorApp', [
   'ui.bootstrap',
   'angularModalService',
   'snackReactor-services',
-  'google.places'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
  
