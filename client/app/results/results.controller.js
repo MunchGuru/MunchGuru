@@ -35,7 +35,6 @@ app.controller('ResultsCtrl', function ($scope,CheckLoggedIn, $location, SearchR
     { id: 'subway-san-francisco',     name: 'Subway',     users: users, rating: 3.5, photo_url:"http://fontmeme.com/images/Subway-Logo.jpg" }
   ];
 
-
   $scope.dislike = function (restaurant){
     console.log($scope.restaurants);
     console.log("disliked", restaurant);
