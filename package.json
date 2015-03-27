@@ -19,6 +19,7 @@
     "express-session": "~1.0.2",
     "grunt-contrib-rename": "0.0.3",
     "jit-grunt": "^0.9.1",
+    "jshint-stylish": "^1.0.1",
     "knex": "^0.7.6",
     "lodash": "~2.4.1",
     "method-override": "~1.0.0",
