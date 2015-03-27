@@ -21,15 +21,21 @@ app.controller('ResultsCtrl', function ($scope,CheckLoggedIn, $location, SearchR
   
   $scope.dislike = function (restaurant){
     console.log("disliked", restaurant);
-    $scope.restaurants.shift();
-  };
-  $scope.like = function (restaurant){
-    console.log("disliked", restaurant);
-    if($scope.restaurants.length-1 === 0){
-      alert("no more restaurants in the queue");
+    if($scope.restaurants.length === 1){
+      $location.path('/');
     }
-    $scope.restaurants.shift();
+    if($scope.restaurants.length-1 >= 1){
+      console.log($scope.restaurants.length);
+      $scope.restaurants.shift();
+    }
   };
+  // $scope.like = function (restaurant){
+  //   console.log("disliked", restaurant);
+  //   if($scope.restaurants.length-1 === 0){
+  //     alert("no more restaurants in the queue");
+  //   }
+  //   $scope.restaurants.shift();
+  // };
 
   $scope.go = function ( path ) {
     $location.path( path );

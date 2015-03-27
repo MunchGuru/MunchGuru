@@ -7,7 +7,8 @@
         <h1>Munch Guru</h1>
         <p class="subtitle">Find the best places to eat near your work or school.</p>
       </div>
-      <a type="button" href="/results" target="_self">Discover Restaurant</a>
+      <!-- <a type="button" href="/results" target="_self">Discover Restaurant</a> -->
+      <button class="discover-btn" ng-click="go('/results')">Discover Restaurants<span class="glyphicon glyphicon-search"></span></button>
       <!-- <button id="search" ng-click="$location.path('#/discover')">Discover</button> -->
       <div class="list">
         <form name="searchForm">

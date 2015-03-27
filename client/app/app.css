@@ -185,6 +185,17 @@ button{
     font-weight: bolder;
 }
 
+.discover-btn {
+    font-size: 1.5em;
+    padding: 10px;
+    /*border: solid thick green;*/
+    background-color: limegreen;
+    border-radius: 10px;
+    width: 440px;
+    color: white;
+    font-weight: bolder;
+}
+
 .picked {
     font-size: .5em;
     padding: 10px;
@@ -433,6 +444,7 @@ button{
     display: inline-block;
     min-height: 150px;
     border-radius: 25px;
+    margin-top: 70px;
 }
 
 .modal-title-md{
@@ -601,4 +613,8 @@ button{
 
 .star-rating{
     color: #F4C712;
+}
+
+.glyphicon-search {
+    margin: 0 0 0 5px;
 }
