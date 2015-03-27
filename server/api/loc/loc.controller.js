@@ -29,11 +29,28 @@ exports.loc = {
 
     var locArray=[];
 
-    var locItem = function(yelp_id, name, users, rating){
-
+    var LocItem = function(yelp_id, locName, users, rating){
+      this.id = yelp_id;
+      this.name = locName;
+      this.users = users;
+      this.rating = rating;
     };
 
     new Location({organization_id: gitOrg_id}).fetchAll().then(function(collection){
+      collection.forEach(function(model){
+        var locId = model.get('id');
+        var locName = model.get('name');
+        var rating = model.get('rating');
+        new Vote({location_id: locId}).fetchAll().then(function(collection){
+          var users = [];
+          collection.forEach(function(model){
+            users.push(model.get('user_info'));
+          });
+          locArray.push(new LocItem(locId, locName, users, rating));
+        }).then(function(){
+          res.status(200).json({result:locArray});
+        });
+      });
 
     });
 
