@@ -34,24 +34,37 @@ db.knex.schema.hasTable('users').then(function(exists) {
   }
 });
 
-// db.knex.schema.hasTable('organizations').then(function(exists) {
-//   if (!exists) {
-//     db.knex.schema.createTable('organizations', function (organization) {
-//       organization.increments('id').primary();
-//       organization.string('name');
-//       organization.string('address');
-//       organization.string('place_id');
-//       organization.string('github_id');
-//       organization.json('github_profile');
-//       organization.float('location_lat');
-//       organization.float('location_long');
-//       organization.string('domain');
-//       organization.timestamps();
-//     }).then(function (table) {
-//       console.log('Created Table', table);
-//     });
-//   }
-// });
+db.knex.schema.hasTable('sessions').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('sessions', function (session) {
+      session.integer('id').primary();
+      session.string('sid').unique();
+      session.string('data');
+      session.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
+db.knex.schema.hasTable('organizations').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('organizations', function (organization) {
+      organization.increments('id').primary();
+      organization.string('name');
+      organization.string('address');
+      organization.string('place_id');
+      organization.string('github_id');
+      organization.json('github_profile');
+      organization.float('location_lat');
+      organization.float('location_long');
+      organization.string('domain');
+      organization.timestamps();
+    }).then(function (table) {
+      console.log('Created Table', table);
+    });
+  }
+});
 
 db.knex.schema.hasTable('locations').then(function(exists) {
   if (!exists) {
