@@ -9,12 +9,27 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
   $scope.showVisting = -2;
   //empty array that will store three random objects.
   //used in our search function to generate results page.
+
+  var arian = {
+    username: 'arianf',
+    userid: 7397857,
+    display: 'Arian Faurtosh'
+  };
+
+  var art = {
+    username: 'devmeyster',
+    userid: 6244629,
+    display: 'Art Meyster'
+  };
+
+  var users = [arian, art];
+
   $scope.places = [
-    { id: 'gary-danko-san-francisco', name: 'Gary Danko', users: ['arianf', 'devmeyster', 'rob'],         rating: 4.5 },
-    { id: 'chipotle-san-francisco',   name: 'Chipotle',   users: ['knatsuki92', 'ThornWinters'],          rating: 3   },
-    { id: 'mc-donalds-san-francisco', name: 'McDonalds',  users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 3.5 },
-    { id: 'carl-jr-san-francisco',    name: 'Carl Jr',    users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 2.5 },
-    { id: 'subway-san-francisco',     name: 'Subway',     users: ['gistrict9', 'asadsheikh', 'bportnoy'], rating: 3.5 }
+    { id: 'gary-danko-san-francisco', name: 'Gary Danko', users: users, rating: 4.5 },
+    { id: 'chipotle-san-francisco',   name: 'Chipotle',   users: users, rating: 3   },
+    { id: 'mc-donalds-san-francisco', name: 'McDonalds',  users: users, rating: 3.5 },
+    { id: 'carl-jr-san-francisco',    name: 'Carl Jr',    users: users, rating: 2.5 },
+    { id: 'subway-san-francisco',     name: 'Subway',     users: users, rating: 3.5 }
   ];
 
   $scope.showGoing = function(num) {
@@ -47,7 +62,7 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
 
   $scope.addPlace = function (restaurant){
     console.log($scope);
-    var newLoc = {id: restaurant.id, name: restaurant.name, rating: restaurant.rating};
+    var newLoc = {id: restaurant.id, name: restaurant.name, rating: restaurant.rating, image_url: restaurant.image_url};
     // var x = SharedData.get('orgId');
 
     SearchRestaurants.addLocation(newLoc);
