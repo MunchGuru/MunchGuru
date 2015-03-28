@@ -10,6 +10,10 @@ exports.sendvote = {
     var org_id = req.body.org_id;
     var user_info = req.body.user_info; //not sure what this will be
 
+    if(!yelp_id || !org_id || !user_info){
+      res.send(404);
+    }
+
     new Location({yelp_id: yelp_id, organization_id: org_id}).fetch().then(function(found){
       if(!found) {
         res.status(409).send("Error: location not identified for your organization");
