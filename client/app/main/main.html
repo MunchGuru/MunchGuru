@@ -23,8 +23,8 @@
         <table class="rankings-table">
           
           <tbody ng-repeat="(key, value) in places | orderBy : 'users.length': true " >
-            <tr ng-class="{going: (key === selectedValue), shadow: (key === showVisting+1)}" class="blocking">
-              <td class="col-going" ng-click="select(key)"><span ng-class="{go: (key !== selectedValue), picked: (key === selectedValue)}">{{(key !== selectedValue)?'GO':'GOING'}}</span></td>
+            <tr ng-class="{going: (value.id === selectedValue), shadow: (value.id === showVisting+1)}" class="blocking">
+              <td class="col-going" ng-click="select(value.id)"><span ng-class="{go: (value.id !== selectedValue), picked: (value.id === selectedValue)}">{{(value.id !== selectedValue)?'GO':'GOING'}}</span></td>
               <td class="col-visit" ng-click="showGoing(key)">{{value.users.length}}</td>
               <td class="col-rating" ng-click="showGoing(key)">
                 <span class="fa fa-star" ng-repeat="n in getNumber(value.rating) track by $index"></span><span class="fa fa-star-half" ng-show="isHalf(value.rating)"></span>

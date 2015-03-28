@@ -2,12 +2,19 @@
 
 angular.module('snackReactor-services',[])
 
-.factory('CheckLoggedIn', ['$http', function($http){
+.factory('CheckLoggedIn', ['$http', 'SharedData', function($http, SharedData){
   return function(){
 
     return $http.post('/auth/checkloggedin')
     .success(function(data, status, headers, config){
-      console.log(data);
+
+      var currentUser = {
+        display: data.password,
+        userid: data.auth_id,
+        username: data.username
+      };
+
+      SharedData.set('currentUser', JSON.stringify(currentUser));
       return true;
     })
     .error(function(data, status, headers, config){
@@ -28,12 +35,14 @@ angular.module('snackReactor-services',[])
   };
 
   var sendVotes = function (vote) {
-        console.log(vote);
+    // yelp_id      taco-bell-san-francisco-9
+    // org_id       11446541
+    // user_info    arianf
 
     return $http({
       method: 'POST',
       url: '/api/sendvote',
-      data: { vote: vote }
+      data: vote
     })
     .then(function (resp) {
       return resp.data;
@@ -48,6 +57,14 @@ angular.module('snackReactor-services',[])
       data: { restaurant: restaurant }
     })
     .then(function (resp) {
+
+      var votingObj = {
+          user_info: SharedData.get('currentUser'),
+          yelp_id: restaurant.id,
+          org_id: SharedData.get('orgId')
+      };
+      sendVotes(votingObj);
+
       return resp.data;
     });
   };
@@ -55,10 +72,11 @@ angular.module('snackReactor-services',[])
   var getLocations = function (org) {
     return $http({
       method: 'GET',
-      url: 'api/dailyloc/'+org,
+      url: 'api/loc/'+org,
     })
     .then(function (resp) {
       return resp.data;
+
     });
   };
 

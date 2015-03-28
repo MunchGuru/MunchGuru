@@ -55,6 +55,7 @@ exports.loc = {
           var locId = model.get('id');
           var locName = model.get('name');
           var rating = model.get('rating');
+          var id = model.get('yelp_id');
 
           console.log('MODEL:', locId, locName, rating);
 
@@ -66,7 +67,7 @@ exports.loc = {
               users.push(model.get('user_info'));
               console.log(model.get('user_info'));
             });
-            var newLocItem = new LocItem(locId, locName, users, rating);
+            var newLocItem = new LocItem(id, locName, users, rating);
             // console.log(newLocItem);
             locArray.push(newLocItem);
             count++
