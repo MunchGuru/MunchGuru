@@ -38,11 +38,12 @@ exports.loc = {
 
     var locArray=[];
 
-    var LocItem = function(yelp_id, locName, users, rating){
+    var LocItem = function(yelp_id, locName, users, rating, img_url){
       this.id = yelp_id;
       this.name = locName;
       this.users = users;
       this.rating = rating;
+      this.img_url = img_url;
     };
 
 
@@ -56,8 +57,8 @@ exports.loc = {
           var locName = model.get('name');
           var rating = model.get('rating');
           var id = model.get('yelp_id');
+          var img_url = model.get('img_url');
 
-          console.log('MODEL:', locId, locName, rating);
 
           new Vote().query('where', 'location_id', '=', locId).fetchAll().then(function(user_coll){
             // console.log('user:', user_coll);
@@ -65,9 +66,8 @@ exports.loc = {
             console.log('users: ', users);
             user_coll.forEach(function(model){
               users.push(model.get('user_info'));
-              console.log(model.get('user_info'));
             });
-            var newLocItem = new LocItem(id, locName, users, rating);
+            var newLocItem = new LocItem(id, locName, users, rating, img_url);
             // console.log(newLocItem);
             locArray.push(newLocItem);
             count++
