@@ -66,6 +66,8 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
       console.log('scope:', $scope.places);
     });
   };
+
+  setInterval(function(){ $scope.refreshPlaces(); }, 1000);
   $scope.select = function(id){
     console.log('SELECTING');
     // if (num === $scope.selectedValue) {
