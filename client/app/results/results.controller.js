@@ -12,28 +12,69 @@ app.controller('ResultsCtrl', function ($scope,CheckLoggedIn, $location, SearchR
   };
   //SearchRestaurants.getLocations();
 
-  var arian = {
-    username: 'arianf',
-    userid: 7397857,
-    display: 'Arian Faurtosh'
+  // var arian = {
+  //   username: 'arianf',
+  //   userid: 7397857,
+  //   display: 'Arian Faurtosh'
+  // };
+
+  // var art = {
+  //   username: 'devmeyster',
+  //   userid: 6244629,
+  //   display: 'Art Meyster'
+  // };
+
+  // var users = [arian, art];
+
+  // $scope.restaurants = 
+  // [
+  //   { id: 'gary-danko-san-francisco', name: 'Gary Danko', users: users, rating: 4.5, photo_url:"http://www.hothangups.com/p7lsm_img_1/thumbs/GaryDanko_tmb.jpg" },
+  //   { id: 'chipotle-san-francisco',   name: 'Chipotle',   users: users, rating: 3,   photo_url:"http://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1024px-Chipotle_Mexican_Grill_logo.svg.png" },
+  //   { id: 'mc-donalds-san-francisco', name: 'McDonalds',  users: users, rating: 3.5, photo_url:"http://img1.wikia.nocookie.net/__cb20100717060808/logopedia/images/a/a9/Mcdonalds-90s-logo.svg" },
+  //   { id: 'carl-jr-san-francisco',    name: 'Carl Jr',    users: users, rating: 2.5, photo_url:"https://fastfoodmenuprice.com/wp-content/uploads/2014/11/carls.jpeg"},
+  //   { id: 'subway-san-francisco',     name: 'Subway',     users: users, rating: 3.5, photo_url:"http://fontmeme.com/images/Subway-Logo.jpg" }
+  // ];
+
+  $scope.refreshPlaces = function() {
+    $scope.currentUser = SharedData.get('currentUser');
+    var orgId = SharedData.get('orgId');
+    SearchRestaurants.getLocations(orgId).then(function(data){
+
+      var result = data.result;
+
+      for(var i = 0; i < result.length; i++){
+        var objusers = result[i].users;
+        for(var b = 0; b < objusers.length; b++){
+          objusers[b] = JSON.parse(objusers[b]);
+        }
+      }
+      $scope.restaurants = result;
+
+      console.log('scope:', $scope.places);
+    });
   };
 
-  var art = {
-    username: 'devmeyster',
-    userid: 6244629,
-    display: 'Art Meyster'
+  $scope.refreshPlaces();
+
+  $scope.select = function(id){
+    
+    console.log('SELECTING');
+    // if (num === $scope.selectedValue) {
+    //   num = null;
+    // }
+    var votingObj = {
+        user_info: SharedData.get('currentUser'),
+        yelp_id: id,
+        org_id: SharedData.get('orgId')
+    };
+    console.log('voting for ', votingObj.yelp_id);
+    // SearchRestaurants.sendVotes()
+    $scope.showVisting = -2;
+    console.log('sending vote');
+    SearchRestaurants.sendVotes(votingObj);
+    $scope.selectedValue = id;
+    $scope.refreshPlaces();
   };
-
-  var users = [arian, art];
-
-  $scope.restaurants = 
-  [
-    { id: 'gary-danko-san-francisco', name: 'Gary Danko', users: users, rating: 4.5, photo_url:"http://www.hothangups.com/p7lsm_img_1/thumbs/GaryDanko_tmb.jpg" },
-    { id: 'chipotle-san-francisco',   name: 'Chipotle',   users: users, rating: 3,   photo_url:"http://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Chipotle_Mexican_Grill_logo.svg/1024px-Chipotle_Mexican_Grill_logo.svg.png" },
-    { id: 'mc-donalds-san-francisco', name: 'McDonalds',  users: users, rating: 3.5, photo_url:"http://img1.wikia.nocookie.net/__cb20100717060808/logopedia/images/a/a9/Mcdonalds-90s-logo.svg" },
-    { id: 'carl-jr-san-francisco',    name: 'Carl Jr',    users: users, rating: 2.5, photo_url:"https://fastfoodmenuprice.com/wp-content/uploads/2014/11/carls.jpeg"},
-    { id: 'subway-san-francisco',     name: 'Subway',     users: users, rating: 3.5, photo_url:"http://fontmeme.com/images/Subway-Logo.jpg" }
-  ];
 
   $scope.dislike = function (restaurant){
     console.log($scope.restaurants);
