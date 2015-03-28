@@ -130,7 +130,7 @@ button{
 .rankings-table{
     margin: 0 auto;
     background-color: white;
-    width: 1000px;
+    width: 1200px;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     color: black;
@@ -263,7 +263,7 @@ button{
 .search-results{
     margin: 0 auto;
     background-color: white;
-    width: 1000px;
+    width: 1200px;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     color: black;
@@ -551,7 +551,7 @@ button{
     width: 300px;
 }
 .col-name {
-    width: 420px;
+    width: 620px;
 }
 
 .img-face {
