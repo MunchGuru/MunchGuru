@@ -34,50 +34,54 @@ exports.loc = {
   getLoc: function(req,res) {
 
     var org_id = req.params.orgId;
-    console.log('orgId', org_id);
 
-    var locArray=[];
+    if(!org_id){
+      res.send(404);
+    } else {
+      console.log('orgId', org_id);
 
-    var LocItem = function(yelp_id, locName, users, rating, img_url){
-      this.id = yelp_id;
-      this.name = locName;
-      this.users = users;
-      this.rating = rating;
-      this.img_url = img_url;
-    };
+      var locArray=[];
 
-
-
-    new Location().query('where', 'organization_id', '=', org_id).fetchAll().then(function(collection){
-
-        var total = collection.length;
-        var count = 0;
-        collection.forEach(function(model){
-          var locId = model.get('id');
-          var locName = model.get('name');
-          var rating = model.get('rating');
-          var id = model.get('yelp_id');
-          var img_url = model.get('img_url');
+      var LocItem = function(yelp_id, locName, users, rating, img_url){
+        this.id = yelp_id;
+        this.name = locName;
+        this.users = users;
+        this.rating = rating;
+        this.img_url = img_url;
+      };
 
 
-          new Vote().query('where', 'location_id', '=', locId).fetchAll().then(function(user_coll){
-            // console.log('user:', user_coll);
-            var users = [];
-            console.log('users: ', users);
-            user_coll.forEach(function(model){
-              users.push(model.get('user_info'));
+
+      new Location().query('where', 'organization_id', '=', org_id).fetchAll().then(function(collection){
+
+          var total = collection.length;
+          var count = 0;
+          collection.forEach(function(model){
+            var locId = model.get('id');
+            var locName = model.get('name');
+            var rating = model.get('rating');
+            var id = model.get('yelp_id');
+            var img_url = model.get('img_url');
+
+
+            new Vote().query('where', 'location_id', '=', locId).fetchAll().then(function(user_coll){
+              // console.log('user:', user_coll);
+              var users = [];
+              console.log('users: ', users);
+              user_coll.forEach(function(model){
+                users.push(model.get('user_info'));
+              });
+              var newLocItem = new LocItem(id, locName, users, rating, img_url);
+              // console.log(newLocItem);
+              locArray.push(newLocItem);
+              count++
+              if(count === total){
+                res.status(200).json({result: locArray});
+              }
             });
-            var newLocItem = new LocItem(id, locName, users, rating, img_url);
-            // console.log(newLocItem);
-            locArray.push(newLocItem);
-            count++
-            if(count === total){
-              res.status(200).json({result: locArray});
-            }
           });
         });
-
-      });
+    }
   }
 };
 
