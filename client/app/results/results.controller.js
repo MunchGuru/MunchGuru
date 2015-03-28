@@ -57,6 +57,7 @@ app.controller('ResultsCtrl', function ($scope,CheckLoggedIn, $location, SearchR
   $scope.refreshPlaces();
 
   $scope.select = function(id){
+    
     console.log('SELECTING');
     // if (num === $scope.selectedValue) {
     //   num = null;

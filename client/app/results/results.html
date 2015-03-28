@@ -8,7 +8,7 @@
           </div>
           <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="box">
-            <div class="box-header" ng-style= "{'background-image': 'url(' + restaurants[0].photo_url + ')'}"></div>
+            <div class="box-header" ng-style= "{'background-image': 'url(' + restaurants[0].img_url + ')'}"></div>
             <div class="restaurant-info">
               <h2 class="browse-h2">{{restaurants[0].name}}</h2>
               <p class="restaurant-info-header">Rating: <rating ng-model="restaurants[0].rating" max="5" id="rating" state-on="'fa fa-star star-rating fa-2x'" state-off="'fa fa-star-o star-rating fa-2x'" class="pull-right" class="rating" readonly="true"></p>
@@ -23,7 +23,7 @@
                     
                   </ul>
                   </div>
-                  <button class="browse-go" ng-click="go('/'); select(user.id)">Go!</button>
+                  <button class="browse-go" ng-click="select(restaurants[0].id); go('/')">Go!</button>
                 </accordion-group>
               </accordion>
             </div>
