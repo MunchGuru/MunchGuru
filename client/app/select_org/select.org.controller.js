@@ -25,7 +25,7 @@ app.controller('SelectOrgCtrl', function ($scope, $modal, $log, CheckLoggedIn, O
     SharedData.set('orgLogin', orgLogin);
     console.log(orgId, orgLogin);
     $location.path('/');
-    // ;//ideally we'll figure out how to close that fucking modal
+    // ;//ideally we'll figure out how to close that modal
 
   };
 
@@ -84,7 +84,7 @@ app.controller('2Ctrl', function ($scope, $modalInstance, items, OrgSelect, $loc
     $modalInstance.close();
     $modalInstance.dismiss('cancel');
     $modalInstance.dismiss('cancel');
-    // ;//ideally we'll figure out how to close that fucking modal
+    // ;//ideally we'll figure out how to close that modal
 
   };
  

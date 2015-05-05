@@ -3,7 +3,7 @@
 var app = angular.module('snackReactorApp');
 //refactor to services
 app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService,$location, SearchRestaurants, SharedData) {
-
+  console.log(SearchRestaurants);
   $scope.isLogged = false;
   $scope.selectedValue = null;
   $scope.showVisting = -2;
@@ -121,6 +121,7 @@ app.controller('MainCtrl', function ($scope, $http, $log,$document, ModalService
 
     SearchRestaurants.getRestaurants(name).then(function(response){
       $scope.results = response;
+      console.log("Response: ", response);
     });
     $scope.restaurant = null;
     // SearchRestaurants.getRestaurants(name).then(function(data){
